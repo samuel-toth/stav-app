@@ -1,0 +1,109 @@
+/* 
+  Localizable.strings
+  Stav
+
+  Created by Samuel Tóth on 16/11/2022.
+  
+*/
+
+"counters" = "Počítadlá";
+"games" = "Súťaže";
+
+"add" = "Pridať";
+"delete" = "Vymazať";
+"save" = "Uložiť";
+"cancel" = "Zrušiť";
+"return" = "Naspäť";
+"reset" = "Obnoviť";
+"more" = "Viac";
+"edit" = "Upraviť";
+
+"youSure" = "Ste si istý?";
+"resetCounter %@" = "Táto akcia obnoví počítadlo %@ na počiatočnú hodnotu. Záznamy nebudú vymazané.";
+"deleteCounter %@" = "Táto akcia vymaže počítadlo %@ spolu so všetkými záznamami.";
+
+"resetGame %@" = "Táto akcia obnoví všetkých hráčov na počiatočnú hodnotu. Záznamy nebudú vymazané.";
+"deleteGame %@" = "Táto akcia vymaže súťaž %@ spolu s hráčmi a všetkými záznamami.";
+
+"showFavourites" = "Zobraziť obľúbené";
+"markFavourite" = "Označiť ako obľúbené";
+"removeFavourite" = "Vymazať z obľúbených";
+
+"settings" = "Nastavenia";
+"sortBy" = "Zoradiť podľa";
+"selectColor" = "Vybrať farbu";
+"selectIcon" = "Vybrať ikonu";
+"customize" = "Prispôsobiť";
+
+
+"name" = "Meno";
+"value" = "Hodnota";
+"modified" = "Zmenené";
+"date" = "Dátum";
+
+"createdAt" = "Dátum vytvorenia";
+"lastChange" = "Posledná zmena";
+"interval" = "Interval";
+"average" = "Priemer";
+"minimum" = "Minimum";
+"maximum" = "Maximum";
+"history" = "História";
+"statistics" = "Štatistiky";
+"noRecords" = "Žiadne záznamy";
+"allRecords" = "Všetky záznamy";
+
+// MARK: Counter translations
+"showAllCounters" = "Ukázať všetky";
+"importCounters" = "Importovať";
+"exportCounters" = "Exportovať";
+"exportHistory" = "Exportovať záznamy";
+"goal" = "Cieľ";
+"goalDate" = "Termín cieľa";
+"goalValue" = "Cieľova hodnota";
+"setupGoal" = "Nastaviť cieľ";
+"reminder" = "Pripomienka";
+"setupReminder" = "Nastaviť propomienku";
+"addCounter" = "Pridať počítadlo";
+"initialValue" = "Počiatočná hodnota (0)";
+"goalReached" = "Cieľ dosiahnutý";
+
+
+
+
+// MARK: Game translations
+"showAllGames" = "Ukázať všetky";
+"importGames" = "Importovať";
+"exportGames" = "Exportovať";
+"addPlayer" = "Pridať hráča";
+"playerName" = "Meno hráča";
+"players" = "Hráči";
+"player" = "Hráč";
+"addGame" = "Pridať súťaž";
+"rename" = "Premenovať";
+"newName" = "Nové meno";
+"showHistory" = "Ukázať históriu";
+"renamePlayer %@" = "Premenovať %@";
+"resetPlayer %@" = "Obnoviť %@";
+"noPlayers" = "Žiadny hráči";
+"draw" = "Remíza";
+
+"justNow" = "Práve teraz";
+"minAgo" = "Pred %@m";
+"hourAgo" = "Pred %@h";
+"dayAgo" = "Pred %@d";
+"weekAgo" = "Pred %@w";
+
+"lessThanMin" = "Ostáva menej ako minúta";
+"minRemaining" = "Ostáva %@m";
+"hourRemaining" = "Ostáva %@h";
+"dayRemaining" = "Ostáva %@d";
+"expired" = "Čas vypršal";
+
+
+"history %@" = "História %@";
+
+
+"daily" = "Denne";
+"weekly" = "Týždenne";
+"monthly" = "Mesačne";
+"yearly" = "Ročne";
