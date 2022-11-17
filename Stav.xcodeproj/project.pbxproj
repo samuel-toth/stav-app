@@ -20,9 +20,7 @@
 		3918316529255E700091F9E1 /* CounterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3918316429255E700091F9E1 /* CounterList.swift */; };
 		3918316729255E8A0091F9E1 /* CounterDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3918316629255E8A0091F9E1 /* CounterDetail.swift */; };
 		3918316929255EA30091F9E1 /* CounterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3918316829255EA30091F9E1 /* CounterRow.swift */; };
-		3918316B29255EBD0091F9E1 /* CounterAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3918316A29255EBD0091F9E1 /* CounterAdd.swift */; };
 		3918316D29255EDC0091F9E1 /* CounterHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3918316C29255EDC0091F9E1 /* CounterHistory.swift */; };
-		3918316F29255EF10091F9E1 /* CounterEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3918316E29255EF10091F9E1 /* CounterEdit.swift */; };
 		3918317229255F250091F9E1 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3918317129255F250091F9E1 /* ColorPicker.swift */; };
 		3918317429255F320091F9E1 /* IconPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3918317329255F320091F9E1 /* IconPicker.swift */; };
 		3918317729255FB80091F9E1 /* IntervalRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3918317629255FB80091F9E1 /* IntervalRange.swift */; };
@@ -38,13 +36,15 @@
 		3918318E292561420091F9E1 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3918318D292561420091F9E1 /* GameManager.swift */; };
 		39183191292561B50091F9E1 /* GameList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39183190292561B50091F9E1 /* GameList.swift */; };
 		39183193292561C80091F9E1 /* GameDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39183192292561C80091F9E1 /* GameDetail.swift */; };
-		39183195292561DD0091F9E1 /* GameAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39183194292561DD0091F9E1 /* GameAdd.swift */; };
 		39183197292561F70091F9E1 /* GameRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39183196292561F70091F9E1 /* GameRow.swift */; };
 		39183199292562220091F9E1 /* PlayerRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39183198292562220091F9E1 /* PlayerRow.swift */; };
 		3918319B292562480091F9E1 /* GameHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3918319A292562480091F9E1 /* GameHistory.swift */; };
 		3918319D292562610091F9E1 /* PlayerHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3918319C292562610091F9E1 /* PlayerHistory.swift */; };
-		3918319F292562760091F9E1 /* GameEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3918319E292562760091F9E1 /* GameEdit.swift */; };
-		392413E62925A06C00CB8A2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 392413E52925A06C00CB8A2B /* LaunchScreen.storyboard */; };
+		3924140B2925AE4B00CB8A2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3924140A2925AE4B00CB8A2B /* LaunchScreen.storyboard */; };
+		3937515629268131004E5E90 /* CounterAddEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3937515529268131004E5E90 /* CounterAddEdit.swift */; };
+		3937515829268642004E5E90 /* GameAddEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3937515729268642004E5E90 /* GameAddEdit.swift */; };
+		3937515B29268F78004E5E90 /* Record+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3937515929268F78004E5E90 /* Record+CoreDataClass.swift */; };
+		3937515C29268F78004E5E90 /* Record+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3937515A29268F78004E5E90 /* Record+CoreDataProperties.swift */; };
 		394416BC2925893400B4D63A /* Counter+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394416B22925893400B4D63A /* Counter+CoreDataClass.swift */; };
 		394416BD2925893400B4D63A /* Counter+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394416B32925893400B4D63A /* Counter+CoreDataProperties.swift */; };
 		394416BE2925893400B4D63A /* GameRecord+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394416B42925893400B4D63A /* GameRecord+CoreDataClass.swift */; };
@@ -92,9 +92,7 @@
 		3918316429255E700091F9E1 /* CounterList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterList.swift; sourceTree = "<group>"; };
 		3918316629255E8A0091F9E1 /* CounterDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterDetail.swift; sourceTree = "<group>"; };
 		3918316829255EA30091F9E1 /* CounterRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterRow.swift; sourceTree = "<group>"; };
-		3918316A29255EBD0091F9E1 /* CounterAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterAdd.swift; sourceTree = "<group>"; };
 		3918316C29255EDC0091F9E1 /* CounterHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterHistory.swift; sourceTree = "<group>"; };
-		3918316E29255EF10091F9E1 /* CounterEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterEdit.swift; sourceTree = "<group>"; };
 		3918317129255F250091F9E1 /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
 		3918317329255F320091F9E1 /* IconPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPicker.swift; sourceTree = "<group>"; };
 		3918317629255FB80091F9E1 /* IntervalRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalRange.swift; sourceTree = "<group>"; };
@@ -110,13 +108,15 @@
 		3918318D292561420091F9E1 /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		39183190292561B50091F9E1 /* GameList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameList.swift; sourceTree = "<group>"; };
 		39183192292561C80091F9E1 /* GameDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetail.swift; sourceTree = "<group>"; };
-		39183194292561DD0091F9E1 /* GameAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAdd.swift; sourceTree = "<group>"; };
 		39183196292561F70091F9E1 /* GameRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRow.swift; sourceTree = "<group>"; };
 		39183198292562220091F9E1 /* PlayerRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRow.swift; sourceTree = "<group>"; };
 		3918319A292562480091F9E1 /* GameHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHistory.swift; sourceTree = "<group>"; };
 		3918319C292562610091F9E1 /* PlayerHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerHistory.swift; sourceTree = "<group>"; };
-		3918319E292562760091F9E1 /* GameEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEdit.swift; sourceTree = "<group>"; };
-		392413E52925A06C00CB8A2B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3924140A2925AE4B00CB8A2B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3937515529268131004E5E90 /* CounterAddEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterAddEdit.swift; sourceTree = "<group>"; };
+		3937515729268642004E5E90 /* GameAddEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAddEdit.swift; sourceTree = "<group>"; };
+		3937515929268F78004E5E90 /* Record+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Record+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		3937515A29268F78004E5E90 /* Record+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Record+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		394416B22925893400B4D63A /* Counter+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Counter+CoreDataClass.swift"; path = "Stav/Model/Counter+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		394416B32925893400B4D63A /* Counter+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Counter+CoreDataProperties.swift"; path = "Stav/Model/Counter+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		394416B42925893400B4D63A /* GameRecord+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "GameRecord+CoreDataClass.swift"; path = "Stav/Model/GameRecord+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
@@ -186,9 +186,9 @@
 				3918312D29255B190091F9E1 /* StavApp.swift */,
 				3918313129255B190091F9E1 /* Assets.xcassets */,
 				3918313829255B190091F9E1 /* Stav.xcdatamodeld */,
+				3924140A2925AE4B00CB8A2B /* LaunchScreen.storyboard */,
 				3918316029255B930091F9E1 /* Localizable.strings */,
 				3918313329255B190091F9E1 /* Preview Content */,
-				392413E52925A06C00CB8A2B /* LaunchScreen.storyboard */,
 			);
 			path = Stav;
 			sourceTree = "<group>";
@@ -235,9 +235,8 @@
 				3918316429255E700091F9E1 /* CounterList.swift */,
 				3918316629255E8A0091F9E1 /* CounterDetail.swift */,
 				3918316829255EA30091F9E1 /* CounterRow.swift */,
-				3918316A29255EBD0091F9E1 /* CounterAdd.swift */,
 				3918316C29255EDC0091F9E1 /* CounterHistory.swift */,
-				3918316E29255EF10091F9E1 /* CounterEdit.swift */,
+				3937515529268131004E5E90 /* CounterAddEdit.swift */,
 			);
 			path = "Counter Views";
 			sourceTree = "<group>";
@@ -296,12 +295,11 @@
 			children = (
 				39183190292561B50091F9E1 /* GameList.swift */,
 				39183192292561C80091F9E1 /* GameDetail.swift */,
-				39183194292561DD0091F9E1 /* GameAdd.swift */,
 				39183196292561F70091F9E1 /* GameRow.swift */,
 				39183198292562220091F9E1 /* PlayerRow.swift */,
 				3918319A292562480091F9E1 /* GameHistory.swift */,
 				3918319C292562610091F9E1 /* PlayerHistory.swift */,
-				3918319E292562760091F9E1 /* GameEdit.swift */,
+				3937515729268642004E5E90 /* GameAddEdit.swift */,
 			);
 			path = "Game Views";
 			sourceTree = "<group>";
@@ -309,6 +307,8 @@
 		394416C629258AEC00B4D63A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3937515929268F78004E5E90 /* Record+CoreDataClass.swift */,
+				3937515A29268F78004E5E90 /* Record+CoreDataProperties.swift */,
 				394416B22925893400B4D63A /* Counter+CoreDataClass.swift */,
 				394416B32925893400B4D63A /* Counter+CoreDataProperties.swift */,
 				394416B42925893400B4D63A /* GameRecord+CoreDataClass.swift */,
@@ -408,8 +408,8 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 				sk,
+				Base,
 			);
 			mainGroup = 3918312129255B180091F9E1;
 			productRefGroup = 3918312B29255B190091F9E1 /* Products */;
@@ -429,7 +429,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3918313529255B190091F9E1 /* Preview Assets.xcassets in Resources */,
-				392413E62925A06C00CB8A2B /* LaunchScreen.storyboard in Resources */,
+				3924140B2925AE4B00CB8A2B /* LaunchScreen.storyboard in Resources */,
 				3918315E29255B930091F9E1 /* Localizable.strings in Resources */,
 				3918313229255B190091F9E1 /* Assets.xcassets in Resources */,
 			);
@@ -456,7 +456,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3918316F29255EF10091F9E1 /* CounterEdit.swift in Sources */,
 				3918319D292562610091F9E1 /* PlayerHistory.swift in Sources */,
 				394416C12925893400B4D63A /* Game+CoreDataProperties.swift in Sources */,
 				3918316529255E700091F9E1 /* CounterList.swift in Sources */,
@@ -465,7 +464,9 @@
 				394416C42925893400B4D63A /* Player+CoreDataClass.swift in Sources */,
 				39183189292560C80091F9E1 /* ViewExtension.swift in Sources */,
 				3918317929255FCC0091F9E1 /* GameStatus.swift in Sources */,
+				3937515B29268F78004E5E90 /* Record+CoreDataClass.swift in Sources */,
 				3918317429255F320091F9E1 /* IconPicker.swift in Sources */,
+				3937515829268642004E5E90 /* GameAddEdit.swift in Sources */,
 				3918313729255B190091F9E1 /* PersistenceController.swift in Sources */,
 				394416BD2925893400B4D63A /* Counter+CoreDataProperties.swift in Sources */,
 				39183191292561B50091F9E1 /* GameList.swift in Sources */,
@@ -479,14 +480,14 @@
 				394416C02925893400B4D63A /* Game+CoreDataClass.swift in Sources */,
 				39183180292560410091F9E1 /* StatisticsHandler.swift in Sources */,
 				394416C52925893400B4D63A /* Player+CoreDataProperties.swift in Sources */,
+				3937515629268131004E5E90 /* CounterAddEdit.swift in Sources */,
 				391831872925609B0091F9E1 /* StringExtension.swift in Sources */,
-				3918316B29255EBD0091F9E1 /* CounterAdd.swift in Sources */,
 				3918312E29255B190091F9E1 /* StavApp.swift in Sources */,
 				3918318C292561240091F9E1 /* CounterManager.swift in Sources */,
+				3937515C29268F78004E5E90 /* Record+CoreDataProperties.swift in Sources */,
 				394416BE2925893400B4D63A /* GameRecord+CoreDataClass.swift in Sources */,
 				39183193292561C80091F9E1 /* GameDetail.swift in Sources */,
 				391831832925606D0091F9E1 /* DateExtension.swift in Sources */,
-				39183195292561DD0091F9E1 /* GameAdd.swift in Sources */,
 				39183199292562220091F9E1 /* PlayerRow.swift in Sources */,
 				3918316929255EA30091F9E1 /* CounterRow.swift in Sources */,
 				394416C22925893400B4D63A /* CounterHistoryRecord+CoreDataClass.swift in Sources */,
@@ -496,7 +497,6 @@
 				3918313A29255B190091F9E1 /* Stav.xcdatamodeld in Sources */,
 				3918316D29255EDC0091F9E1 /* CounterHistory.swift in Sources */,
 				3918319B292562480091F9E1 /* GameHistory.swift in Sources */,
-				3918319F292562760091F9E1 /* GameEdit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,6 +549,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -609,6 +610,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

@@ -16,10 +16,11 @@ struct GameList: View {
     
     @State private var isSheetPresented: Bool = false
     @State private var showFavourite: Bool = false
+    
 
+    
     var body: some View {
         NavigationStack {
-            VStack {
                 List {
                     ForEach(games) { game in
                         NavigationLink(value: game) {
@@ -28,11 +29,14 @@ struct GameList: View {
                         }
                     }
                     .onDelete(perform: deleteGame)
+                    .listRowBackground(Color(UIColor.secondarySystemGroupedBackground).opacity(0.8))
                 }
                 .navigationDestination(for: Game.self, destination: { game in
                     GameDetail(game: game)
                         .environment(\.managedObjectContext, viewContext)
                 })
+                .shadow(radius: 5, x: 0, y: 5)
+                .scrollContentBackground(.hidden)
                 .toolbar {
                     ToolbarItem {
                         Button(action: {
@@ -64,11 +68,16 @@ struct GameList: View {
                     }
                 }
                 .sheet(isPresented: $isSheetPresented, content: {
-                    GameAdd()
+                    GameAddEdit()
                 })
-                .navigationTitle("games")
-            }
+            .navigationTitle("games")
+            
         }
+//        .background(Image("AppIconNoBg")
+//            .resizable()
+//            .scaledToFit()
+//            .opacity(1))
+
     }
     
     private func deleteGame(offsets: IndexSet) {

@@ -63,6 +63,7 @@ struct CounterRow: View {
             Text("\(counter.value)")
                 .valueDisplayStyle()
         }
+
         .contextMenu {
             Button {
                 CounterManager.shared.toggleFavourite(counter: counter)

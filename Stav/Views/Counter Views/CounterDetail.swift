@@ -253,7 +253,7 @@ struct CounterDetail: View {
             CounterHistory(counter: counter, historyRecords: historyRecords)
         }
         .sheet(isPresented: $showEditSheet) {
-            CounterEdit(counter: counter)
+            CounterAddEdit(counterToEdit: counter)
         }
         .toolbar {
             ToolbarItem(placement: .principal) {

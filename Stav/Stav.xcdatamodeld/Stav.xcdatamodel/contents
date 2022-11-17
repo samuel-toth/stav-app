@@ -30,6 +30,7 @@
         <attribute name="name" attributeType="String"/>
         <relationship name="gamePlayers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Player" inverseName="playerGame" inverseEntity="Player"/>
         <relationship name="gameRecords" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GameRecord" inverseName="recordGame" inverseEntity="GameRecord"/>
+        <relationship name="records" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Record" inverseName="game" inverseEntity="Record"/>
     </entity>
     <entity name="GameRecord" representedClassName="GameRecord" syncable="YES">
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
@@ -47,5 +48,14 @@
         <attribute name="score" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="playerGame" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Game" inverseName="gamePlayers" inverseEntity="Game"/>
         <relationship name="playerRecords" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GameRecord" inverseName="recordPlayer" inverseEntity="GameRecord"/>
+        <relationship name="records" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Record" inverseName="player" inverseEntity="Record"/>
+    </entity>
+    <entity name="Record" representedClassName="Record" syncable="YES">
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="result" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="value" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="game" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Game" inverseName="records" inverseEntity="Game"/>
+        <relationship name="player" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="records" inverseEntity="Player"/>
     </entity>
 </model>

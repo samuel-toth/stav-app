@@ -129,7 +129,7 @@ struct GameDetail: View {
                 
             }
             .sheet(isPresented: $showEditSheet) {
-                GameEdit(game: game)
+                GameAddEdit(gameToEdit: game)
             }
             .sheet(isPresented: $showHistorySheet) {
                 GameHistory(gameName: game.wrappedName, gameRecords: gameHistory)

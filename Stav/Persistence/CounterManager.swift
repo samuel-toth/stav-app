@@ -55,7 +55,7 @@ class CounterManager {
         save()
     }
     
-    func updateCounter(counter: Counter, name: String, hasGoal: Bool, color: String, icon: String, goalValue: Int) {
+    func updateCounter(counter: Counter, name: String, hasGoal: Bool, color: String, icon: String, goalValue: Int, goalDate: Date) {
         counter.name = name
         counter.modifiedAt = Date()
         counter.hasGoal = hasGoal
@@ -63,6 +63,7 @@ class CounterManager {
         counter.icon = icon
         if hasGoal {
             counter.goalValue = Int16(goalValue)
+            counter.goalDate = goalDate
         }
         
         save()

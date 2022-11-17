@@ -13,7 +13,7 @@ struct PersistenceController {
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        for i in 0..<5 {
+        for i in 0..<3 {
             let newCounter = Counter(context: viewContext)
             newCounter.id = UUID()
             newCounter.name = "Test"
@@ -24,7 +24,7 @@ struct PersistenceController {
             newCounter.value = 200
             newCounter.goalDate = Date().addingTimeInterval(100000)
             newCounter.isFavourite = i < 2 ? false : true
-            
+
             let newGame = Game(context: viewContext)
             newGame.id = UUID()
             newGame.name = "NHL"

@@ -24,11 +24,18 @@ struct CounterList: View {
     @State private var sortValueAscending: Bool = true
     @State private var sortModifiedAscending: Bool = true
     
-    init() {
-    }
+    
     var body: some View {
+        
         NavigationStack {
+            if counters.isEmpty {
+                Image("AppIconNoBg")
+                    .resizable()
+                    .scaledToFit()
+                    .opacity(0.2)
+            }
             List {
+                
                 ForEach(counters) { counter in
                     NavigationLink(value: counter) {
                         CounterRow(counter: counter)
@@ -36,11 +43,21 @@ struct CounterList: View {
                     }
                 }
                 .onDelete(perform: deleteCounter)
+                .listRowBackground(Color(UIColor.secondarySystemGroupedBackground).opacity(0.8))
+                
             }
             .navigationDestination(for: Counter.self, destination: { counter in
                 CounterDetail(counter: counter)
                     .environment(\.managedObjectContext, viewContext)
             })
+            .shadow(radius: 5, x: 0, y: 5)
+            .scrollContentBackground(.hidden) // new in
+//            .background {
+//                Image("AppIconNoBg")
+//                    .resizable()
+//                    .scaledToFit()
+//                    .opacity(0.2)
+//            }
             .toolbar {
                 ToolbarItem {
                     Button(action: {
@@ -98,10 +115,12 @@ struct CounterList: View {
                 }
             }
             .sheet(isPresented: $isSheetPresented) {
-                CounterAdd()
+                CounterAddEdit()
             }
             .navigationTitle("counters")
+            
         }
+        
     }
     
     private func sortCounters() {
