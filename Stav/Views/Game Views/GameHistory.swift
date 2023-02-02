@@ -11,10 +11,10 @@ struct GameHistory: View {
     
     @Environment(\.dismiss) private var dismiss
 
-    private var gameRecords: [GameRecord]
+    private var gameRecords: [Record]
     private var gameName: String
     
-    init(gameName: String, gameRecords: [GameRecord]) {
+    init(gameName: String, gameRecords: [Record]) {
         self.gameRecords = gameRecords
         self.gameName = gameName
     }
@@ -31,7 +31,7 @@ struct GameHistory: View {
                         Divider()
                         Text(record.value > 0 ? "+\(record.value)" : "\(record.value)")
                         Spacer()
-                        Text(record.recordPlayer?.name ?? "")
+                        Text(record.player?.name ?? "")
                             .multilineTextAlignment(.trailing)
                         Divider()
                         Text(record.timestamp?.dateToFormattedDatetime() ?? "")
@@ -59,12 +59,12 @@ struct GameHistory_Previews: PreviewProvider {
         previewPlayer.score = 20
         previewPlayer.id = UUID()
         
-        let newRecord = GameRecord(context: PersistenceController.preview.container.viewContext)
+        let newRecord = Record(context: PersistenceController.preview.container.viewContext)
         newRecord.id = UUID()
         newRecord.timestamp = Date()
         newRecord.value = 1
         newRecord.result = 20
-        newRecord.recordPlayer = previewPlayer
+        newRecord.player = previewPlayer
 
         return GameHistory(gameName: "Test name", gameRecords: [newRecord])
     }

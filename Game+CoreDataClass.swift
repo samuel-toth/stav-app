@@ -2,7 +2,7 @@
 //  Game+CoreDataClass.swift
 //  Stav
 //
-//  Created by Samuel Tóth on 16/11/2022.
+//  Created by Samuel Tóth on 18/11/2022.
 //
 //
 

@@ -26,7 +26,7 @@ class GameManager {
             let newPlayer = Player(context: viewContext)
             newPlayer.id = UUID()
             newPlayer.name = player.name
-            newPlayer.playerGame = newGame
+            newPlayer.game = newGame
             newPlayer.createdAt = Date()
             newPlayer.modifiedAt = Date()
         }
@@ -43,7 +43,7 @@ class GameManager {
         let newPlayer = Player(context: viewContext)
         newPlayer.id = UUID()
         newPlayer.name = playerName
-        newPlayer.playerGame = game
+        newPlayer.game = game
         newPlayer.createdAt = Date()
         newPlayer.modifiedAt = Date()
 
@@ -75,7 +75,7 @@ class GameManager {
 
     func getGamePlayersCount(id: UUID) -> Int {
         let request: NSFetchRequest<Player> = Player.fetchRequest()
-        request.predicate = NSPredicate(format: "playerGame.id == %@", id as CVarArg)
+        request.predicate = NSPredicate(format: "game.id == %@", id as CVarArg)
 
         do {
             let result = try viewContext.fetch(request)
@@ -88,7 +88,7 @@ class GameManager {
 
     func getLocalizedGameResult(id: UUID) -> String {
         let request: NSFetchRequest<Player> = Player.fetchRequest()
-        request.predicate = NSPredicate(format: "playerGame.id == %@", id as CVarArg)
+        request.predicate = NSPredicate(format: "game.id == %@", id as CVarArg)
         request.sortDescriptors = [NSSortDescriptor(keyPath: \Player.score, ascending: false)]
 
         do {
@@ -113,23 +113,23 @@ class GameManager {
     }
     
     func updatePlayerScore(player: Player, score: Int) {
-        player.score += Int32(score)
+        player.score += Int16(score)
         player.modifiedAt = Date()
 
-        let gameRecord = GameRecord(context: viewContext)
+        let gameRecord = Record(context: viewContext)
         gameRecord.id = UUID()
         gameRecord.timestamp = Date()
-        gameRecord.value = Int32(score)
-        gameRecord.recordPlayer = player
+        gameRecord.value = Int16(score)
+        gameRecord.player = player
         gameRecord.result = player.score
-        gameRecord.recordGame = player.playerGame
+        gameRecord.game = player.game
 
         save()
     }
 
     func resetGame(game: Game) {
         let request: NSFetchRequest<Player> = Player.fetchRequest()
-        request.predicate = NSPredicate(format: "playerGame.id == %@", game.id! as CVarArg)
+        request.predicate = NSPredicate(format: "game.id == %@", game.id! as CVarArg)
 
         do {
             let result = try viewContext.fetch(request)

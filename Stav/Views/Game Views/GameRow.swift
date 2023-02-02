@@ -35,7 +35,9 @@ struct GameRow: View {
                         .foregroundColor(Color(UIColor.secondaryLabel))
                 }
             }
+            
             Spacer()
+            
             HStack {
                 Text("\(GameManager.shared.getGamePlayersCount(id: game.id ?? UUID()))")
                     .valueDisplayStyle()

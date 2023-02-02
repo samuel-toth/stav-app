@@ -141,7 +141,7 @@ struct CounterAddEdit: View {
                 if (counter != nil) {
                     CounterManager.shared.updateCounter(counter: counter!, name: name, hasGoal: hasGoal, color: selectedColor, icon: selectedIcon, goalValue: goalValue!, goalDate: goalDate)
                 } else {
-                    CounterManager.shared.addCounter(name: name, value: value!, hasGoal: hasGoal, color: selectedColor, icon: selectedIcon, goalValue: goalValue, goalDate: goalDate)
+                    CounterManager.shared.addCounter(name: name, value: value ?? 0, hasGoal: hasGoal, color: selectedColor, icon: selectedIcon, goalValue: goalValue, goalDate: goalDate)
                 }
                 dismiss()
             }

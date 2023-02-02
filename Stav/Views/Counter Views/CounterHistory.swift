@@ -13,10 +13,10 @@ struct CounterHistory: View {
     
     @Environment(\.dismiss) private var dismiss
     
-    private var historyRecords: [CounterHistoryRecord]
+    private var historyRecords: [Record]
     private var counter: Counter
     
-    init (counter: Counter, historyRecords: [CounterHistoryRecord]) {
+    init (counter: Counter, historyRecords: [Record]) {
         self.counter = counter
         self.historyRecords = historyRecords
     }
@@ -60,11 +60,11 @@ struct CounterHistoryView_Previews: PreviewProvider {
         newCounter.createdAt = Date()
         newCounter.modifiedAt = Date()
         
-        let newHistoryRecord = CounterHistoryRecord(context: viewContext)
+        let newHistoryRecord = Record(context: viewContext)
         newHistoryRecord.id = UUID()
         newHistoryRecord.timestamp = Date()
         newHistoryRecord.value = 1
-        newHistoryRecord.recordCounter = newCounter
+        newHistoryRecord.counter = newCounter
         newHistoryRecord.result = newCounter.value
         
         return CounterHistory(counter: newCounter, historyRecords: [newHistoryRecord])

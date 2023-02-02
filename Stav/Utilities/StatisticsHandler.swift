@@ -16,7 +16,7 @@ class StatisticsHandler {
 
     static let shared = StatisticsHandler()
     
-    func groupHistoryRecordsForInterval(historyRecords: [CounterHistoryRecord], interval: IntervalRange) -> (average: Double, max: Int, min: Int) {
+    func groupHistoryRecordsForInterval(historyRecords: [Record], interval: IntervalRange) -> (average: Double, max: Int, min: Int) {
         switch interval {
         case .daily:
             let groupedData = groupHistoryRecordsByDay(historyRecords: historyRecords)
@@ -33,9 +33,9 @@ class StatisticsHandler {
         }
     }
 
-    private func groupHistoryRecordsByDay(historyRecords: [CounterHistoryRecord]) -> [GroupData] {
+    private func groupHistoryRecordsByDay(historyRecords: [Record]) -> [GroupData] {
 
-        let empty: [Date: [CounterHistoryRecord]] = [:]
+        let empty: [Date: [Record]] = [:]
         return historyRecords.reduce(into: empty) { acc, cur in
                     let components = Calendar.current.dateComponents([.year, .month, .day], from: cur.timestamp ?? Date())
                     let date = Calendar.current.date(from: components)!
@@ -45,9 +45,9 @@ class StatisticsHandler {
                 .map { GroupData(value: $0.value, date: $0.key) }
     }
 
-    private func groupHistoryRecordsByWeek(historyRecords: [CounterHistoryRecord]) -> [GroupData] {
+    private func groupHistoryRecordsByWeek(historyRecords: [Record]) -> [GroupData] {
 
-        let empty: [Date: [CounterHistoryRecord]] = [:]
+        let empty: [Date: [Record]] = [:]
         return historyRecords.reduce(into: empty) { acc, cur in
                     let components = Calendar.current.dateComponents([.year, .month, .weekOfMonth], from: cur.timestamp ?? Date())
                     let date = Calendar.current.date(from: components)!
@@ -57,8 +57,8 @@ class StatisticsHandler {
                 .map { GroupData(value: $0.value, date: $0.key) }
     }
 
-    private func groupHistoryRecordsByMonth(historyRecords: [CounterHistoryRecord]) -> [GroupData] {
-        let empty: [Date: [CounterHistoryRecord]] = [:]
+    private func groupHistoryRecordsByMonth(historyRecords: [Record]) -> [GroupData] {
+        let empty: [Date: [Record]] = [:]
         return historyRecords.reduce(into: empty) { acc, cur in
                     let components = Calendar.current.dateComponents([.year, .month], from: cur.timestamp ?? Date())
                     let date = Calendar.current.date(from: components)!
@@ -68,9 +68,9 @@ class StatisticsHandler {
                 .map { GroupData(value: $0.value, date: $0.key) }
     }
 
-    private func groupHistoryRecordsByYear(historyRecords: [CounterHistoryRecord]) -> [GroupData] {
+    private func groupHistoryRecordsByYear(historyRecords: [Record]) -> [GroupData] {
         
-        let empty: [Date: [CounterHistoryRecord]] = [:]
+        let empty: [Date: [Record]] = [:]
         return historyRecords.reduce(into: empty) { acc, cur in
             let components = Calendar.current.dateComponents([.year], from: cur.timestamp ?? Date())
             let date = Calendar.current.date(from: components)!

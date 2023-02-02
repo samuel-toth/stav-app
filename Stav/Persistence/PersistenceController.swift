@@ -30,6 +30,12 @@ struct PersistenceController {
             newGame.name = "NHL"
             newGame.color = "picker_blue"
             newGame.createdAt = Date()
+            
+            let newDate = Datum(context: viewContext)
+            newDate.id = UUID()
+            newDate.name = "Name"
+            newDate.timestamp = Date().addingTimeInterval(100000000)
+            newDate.createdAt = Date()
         }
         
         try! viewContext.save()

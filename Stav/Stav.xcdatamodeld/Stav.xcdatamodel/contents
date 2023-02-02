@@ -12,14 +12,18 @@
         <attribute name="modifiedAt" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" attributeType="String" defaultValueString=""/>
         <attribute name="value" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="historyRecords" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CounterHistoryRecord" inverseName="recordCounter" inverseEntity="CounterHistoryRecord"/>
+        <relationship name="records" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Record" inverseName="counter" inverseEntity="Record"/>
     </entity>
-    <entity name="CounterHistoryRecord" representedClassName="CounterHistoryRecord" syncable="YES">
+    <entity name="Datum" representedClassName="Datum" syncable="YES">
+        <attribute name="color" attributeType="String" defaultValueString="AccentColor"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="icon" attributeType="String" defaultValueString="calendar.circle"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="result" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="isFavourite" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="isRepeating" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String" defaultValueString=""/>
+        <attribute name="repeatCycle" optional="YES" attributeType="String" defaultValueString="yearly"/>
         <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="value" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="recordCounter" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Counter" inverseName="historyRecords" inverseEntity="Counter"/>
     </entity>
     <entity name="Game" representedClassName="Game" syncable="YES">
         <attribute name="color" attributeType="String" defaultValueString="AccentColor"/>
@@ -28,26 +32,16 @@
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="isFavourite" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="name" attributeType="String"/>
-        <relationship name="gamePlayers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Player" inverseName="playerGame" inverseEntity="Player"/>
-        <relationship name="gameRecords" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GameRecord" inverseName="recordGame" inverseEntity="GameRecord"/>
+        <relationship name="players" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Player" inverseName="game" inverseEntity="Player"/>
         <relationship name="records" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Record" inverseName="game" inverseEntity="Record"/>
-    </entity>
-    <entity name="GameRecord" representedClassName="GameRecord" syncable="YES">
-        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="result" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="value" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="recordGame" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Game" inverseName="gameRecords" inverseEntity="Game"/>
-        <relationship name="recordPlayer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="playerRecords" inverseEntity="Player"/>
     </entity>
     <entity name="Player" representedClassName="Player" syncable="YES">
         <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="modifiedAt" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" attributeType="String" defaultValueString="-"/>
-        <attribute name="score" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="playerGame" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Game" inverseName="gamePlayers" inverseEntity="Game"/>
-        <relationship name="playerRecords" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GameRecord" inverseName="recordPlayer" inverseEntity="GameRecord"/>
+        <attribute name="score" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="game" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Game" inverseName="players" inverseEntity="Game"/>
         <relationship name="records" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Record" inverseName="player" inverseEntity="Record"/>
     </entity>
     <entity name="Record" representedClassName="Record" syncable="YES">
@@ -55,6 +49,7 @@
         <attribute name="result" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="value" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="counter" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Counter" inverseName="records" inverseEntity="Counter"/>
         <relationship name="game" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Game" inverseName="records" inverseEntity="Game"/>
         <relationship name="player" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="records" inverseEntity="Player"/>
     </entity>

@@ -24,7 +24,7 @@ struct PlayerRow: View {
     var body: some View {
         HStack {
             Image(systemName: "person.fill")
-                .foregroundColor(Color(player.playerGame?.color ?? "AccentColor"))
+                .foregroundColor(Color(player.game?.color ?? "AccentColor"))
             VStack(alignment: .leading) {
                 Text(player.name ?? "")
                     .font(Font.system(.title3, design: .default))
@@ -75,7 +75,7 @@ struct PlayerRow: View {
         .background(Color(UIColor.secondarySystemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
         .sheet(isPresented: $showPlayerHistory) {
-            PlayerHistory(gameRecords: player.playerRecords?.toArray() ?? [], playerName: player.wrappedName)
+            PlayerHistory(gameRecords: player.records?.toArray() ?? [], playerName: player.wrappedName)
         }
         .contextMenu {
             Button {

@@ -11,10 +11,10 @@ struct PlayerHistory: View {
     
     @Environment(\.dismiss) private var dismiss
     
-    private var gameRecords: [GameRecord]
+    private var gameRecords: [Record]
     private var playerName: String
     
-    init(gameRecords: [GameRecord], playerName: String) {
+    init(gameRecords: [Record], playerName: String) {
         self.gameRecords = gameRecords
         self.playerName = playerName
         self.gameRecords.sort { $0.timestamp ?? Date() > $1.timestamp ?? Date() }
@@ -58,12 +58,12 @@ struct PlayerHistory_Previews: PreviewProvider {
         previewPlayer.score = 20
         previewPlayer.id = UUID()
         
-        let newRecord = GameRecord(context: PersistenceController.preview.container.viewContext)
+        let newRecord = Record(context: PersistenceController.preview.container.viewContext)
         newRecord.id = UUID()
         newRecord.timestamp = Date()
         newRecord.value = 1
         newRecord.result = 20
-        newRecord.recordPlayer = previewPlayer
+        newRecord.player = previewPlayer
         
         return PlayerHistory(gameRecords: [newRecord], playerName: previewPlayer.name ?? "")
     }

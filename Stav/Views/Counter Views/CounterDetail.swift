@@ -28,21 +28,21 @@ struct CounterDetail: View {
     
     @State private var offset = 0
     
-    private var historyRecords: [CounterHistoryRecord]
+    private var historyRecords: [Record]
     private var statisticsHandler: StatisticsHandler = StatisticsHandler.shared
     
     
     @State private var selectedNumber = 1
-
-
+    
+    
     
     
     init(counter: Counter) {
         self.counter = counter
         
-        let request: NSFetchRequest<CounterHistoryRecord> = CounterHistoryRecord.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(keyPath: \CounterHistoryRecord.timestamp, ascending: false)]
-        request.predicate = NSPredicate(format: "recordCounter == %@", counter)
+        let request: NSFetchRequest<Record> = Record.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \Record.timestamp, ascending: false)]
+        request.predicate = NSPredicate(format: "counter == %@", counter)
         
         historyRecords = try! PersistenceController.shared.container.viewContext.fetch(request)
         
@@ -52,12 +52,12 @@ struct CounterDetail: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .center) {
-
-                    Text("\(counter.value)")
-                        .font(.system(size:90))
-                        .fontWeight(Font.Weight.semibold)
-                        .padding([.bottom], 10)
-                        .foregroundColor(Color(counter.wrappedColor))
+                
+                Text("\(counter.value)")
+                    .font(.system(size:90))
+                    .fontWeight(Font.Weight.semibold)
+                    .padding([.bottom], 10)
+                    .foregroundColor(Color(counter.wrappedColor))
                 
                 
                 
@@ -72,7 +72,7 @@ struct CounterDetail: View {
                         }
                         .padding([.leading, .trailing], 40)
                         
-
+                        
                         
                         
                         Button(action: {
@@ -98,7 +98,7 @@ struct CounterDetail: View {
                     .clipped()
                 }
                 
-            
+                
                 if counter.hasGoal {
                     VStack {
                         Gauge(value: Double(counter.value), in: 0...Double(counter.goalValue)) {

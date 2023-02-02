@@ -23,20 +23,20 @@ struct GameDetail: View {
     @State private var showHistorySheet = false
     @State private var showEditSheet = false
     
-    private var gameHistory: [GameRecord]
+    private var gameHistory: [Record]
     private var gamePlayers: [Player]
     
     init(game: Game) {
         self.game = game
         
         let playerRequest: NSFetchRequest<Player> = Player.fetchRequest()
-        playerRequest.predicate = NSPredicate(format: "playerGame == %@", game)
+        playerRequest.predicate = NSPredicate(format: "game == %@", game)
         playerRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Player.name, ascending: true)]
         gamePlayers = try! PersistenceController.shared.container.viewContext.fetch(playerRequest)
         
-        let request: NSFetchRequest<GameRecord> = GameRecord.fetchRequest()
-        request.predicate = NSPredicate(format: "recordGame == %@", game)
-        request.sortDescriptors = [NSSortDescriptor(keyPath: \GameRecord.timestamp, ascending: false)]
+        let request: NSFetchRequest<Record> = Record.fetchRequest()
+        request.predicate = NSPredicate(format: "game == %@", game)
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \Record.timestamp, ascending: false)]
         gameHistory = try! PersistenceController.shared.container.viewContext.fetch(request)
     }
     
@@ -63,7 +63,7 @@ struct GameDetail: View {
                             Divider()
                             Text(record.value > 0 ? "+\(record.value)" : "\(record.value)")
                             Spacer()
-                            Text(record.recordPlayer?.name ?? "")
+                            Text(record.player?.name ?? "")
                                 .multilineTextAlignment(.trailing)
                             Divider()
                             Text(record.wrappedTimestamp.dateToFormattedDatetime())
@@ -126,7 +126,6 @@ struct GameDetail: View {
                             playerToAdd = ""
                         })
                         Button("cancel", role: .cancel, action: {})})
-                
             }
             .sheet(isPresented: $showEditSheet) {
                 GameAddEdit(gameToEdit: game)

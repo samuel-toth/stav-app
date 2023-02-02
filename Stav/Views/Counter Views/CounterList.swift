@@ -32,7 +32,7 @@ struct CounterList: View {
                 Image("AppIconNoBg")
                     .resizable()
                     .scaledToFit()
-                    .opacity(0.2)
+                    .opacity(0.1)
             }
             List {
                 
@@ -50,14 +50,7 @@ struct CounterList: View {
                 CounterDetail(counter: counter)
                     .environment(\.managedObjectContext, viewContext)
             })
-            .shadow(radius: 5, x: 0, y: 5)
-            .scrollContentBackground(.hidden) // new in
-//            .background {
-//                Image("AppIconNoBg")
-//                    .resizable()
-//                    .scaledToFit()
-//                    .opacity(0.2)
-//            }
+
             .toolbar {
                 ToolbarItem {
                     Button(action: {

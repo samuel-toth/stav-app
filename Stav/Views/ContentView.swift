@@ -19,12 +19,19 @@ struct ContentView: View {
     }
     var body: some View {
         TabView {
-            CounterList().environment(\.managedObjectContext, viewContext)
+            CounterList()
+                .environment(\.managedObjectContext, viewContext)
                 .tabItem {
                     Label("counters", systemImage: "number")
                         .fontWeight(.heavy)
                 }
-            GameList().environment(\.managedObjectContext, viewContext)
+            DateList()
+                .environment(\.managedObjectContext, viewContext)
+                    .tabItem {
+                        Label("dates", systemImage: "calendar")
+                    }
+            GameList()
+                .environment(\.managedObjectContext, viewContext)
                 .tabItem {
                     Label("games", systemImage: "person.3.fill")
                 }

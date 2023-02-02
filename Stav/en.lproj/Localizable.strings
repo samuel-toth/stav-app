@@ -105,3 +105,19 @@
 "weekly" = "Weekly";
 "monthly" = "Monthly";
 "yearly" = "Yearly";
+
+
+// MARK: Date translations
+"dates" = "Dates";
+"remaining" = "remaining";
+"havePassed" = "have passed";
+"onDay" = "On day";
+
+"day" = "day";
+"days" = "days";
+"minute" = "minute";
+"minutes" = "minutes";
+"hour" = "hour";
+"hours" = "hours";
+
+"hours " = "hours ";

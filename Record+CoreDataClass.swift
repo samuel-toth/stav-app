@@ -2,7 +2,7 @@
 //  Record+CoreDataClass.swift
 //  Stav
 //
-//  Created by Samuel Tóth on 17/11/2022.
+//  Created by Samuel Tóth on 18/11/2022.
 //
 //
 

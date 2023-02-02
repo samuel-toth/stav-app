@@ -107,3 +107,18 @@
 "weekly" = "Týždenne";
 "monthly" = "Mesačne";
 "yearly" = "Ročne";
+
+
+// MARK: Date translations
+"dates" = "Dátumy";
+"remaining" = "ostáva";
+"havePassed" = "uplynulo";
+"onDay" = "Dňa";
+
+
+"day" = "deň";
+"days" = "dni";
+"minute" = "minúta";
+"minutes" = "minút";
+"hour" = "hodina";
+"hours" = "hodín";

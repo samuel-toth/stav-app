@@ -31,11 +31,11 @@ class CounterManager {
             newCounter.goalDate = goalDate
         }
         
-        let historyRecord = CounterHistoryRecord(context: viewContext)
+        let historyRecord = Record(context: viewContext)
         historyRecord.id = UUID()
         historyRecord.timestamp = Date()
         historyRecord.value = Int16(value)
-        historyRecord.recordCounter = newCounter
+        historyRecord.counter = newCounter
         historyRecord.result = Int16(value)
         
         save()
@@ -45,11 +45,11 @@ class CounterManager {
         counter.value += Int16(value)
         counter.modifiedAt = Date()
 
-        let historyRecord = CounterHistoryRecord(context: viewContext)
+        let historyRecord = Record(context: viewContext)
         historyRecord.id = UUID()
         historyRecord.timestamp = Date()
         historyRecord.value = Int16(value)
-        historyRecord.recordCounter = counter
+        historyRecord.counter = counter
         historyRecord.result = counter.value
         
         save()
@@ -82,11 +82,11 @@ class CounterManager {
     }
     
     func resetCounter(counter: Counter) {
-        let historyRecord = CounterHistoryRecord(context: viewContext)
+        let historyRecord = Record(context: viewContext)
         historyRecord.id = UUID()
         historyRecord.timestamp = Date()
         historyRecord.value = Int16(0 - counter.value)
-        historyRecord.recordCounter = counter
+        historyRecord.counter = counter
         
         counter.value = 0
         counter.modifiedAt = Date()
@@ -105,9 +105,6 @@ class CounterManager {
         }
     }
 
-    
-    //private var previewViewContext = PersistenceController.preview.container.viewContext
-
     func createTestData() -> Counter {
         let newCounter = Counter(context: viewContext)
         newCounter.id = UUID(uuidString: "E621E1F8-C36C-495A-93FC-0C247A3E6E5F")!
@@ -123,17 +120,14 @@ class CounterManager {
         newCounter.color = "picker_red"
         newCounter.icon = "car.circle.fill"
 
-        // create 100 history records from 100 days ago to today with random values
         for i in 0...100 {
-            let historyRecord = CounterHistoryRecord(context: viewContext)
+            let historyRecord = Record(context: viewContext)
             historyRecord.id = UUID()
             historyRecord.timestamp = Date().addingTimeInterval(Double(-100000 + i * 86400))
             historyRecord.value = Int16.random(in: -10...10)
-            historyRecord.recordCounter = newCounter
+            historyRecord.counter = newCounter
             historyRecord.result = Int16.random(in: 200...400)
         }
-
-
 
         do {
             try viewContext.save()

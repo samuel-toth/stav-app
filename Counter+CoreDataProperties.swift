@@ -2,7 +2,7 @@
 //  Counter+CoreDataProperties.swift
 //  Stav
 //
-//  Created by Samuel Tóth on 16/11/2022.
+//  Created by Samuel Tóth on 18/11/2022.
 //
 //
 
@@ -27,51 +27,47 @@ extension Counter {
     @NSManaged public var modifiedAt: Date?
     @NSManaged public var name: String?
     @NSManaged public var value: Int16
-    @NSManaged public var historyRecords: NSSet?
+    @NSManaged public var records: NSSet?
 
-    public var wrappedName: String {
-        name ?? "Unknown name"
+    var wrappedName: String {
+        name ?? "Unknown Counter"
     }
 
-    public var wrappedColor: String {
+    var wrappedColor: String {
         color ?? "AccentColor"
     }
 
-    public var wrappedIcon: String {
+    var wrappedIcon: String {
         icon ?? "exclamationmark.circle"
     }
 
-    public var wrappedCreatedAt: Date {
+    var wrappedCreatedAt: Date {
         createdAt ?? Date()
     }
 
-    public var wrappedModifiedAt: Date {
+    var wrappedModifiedAt: Date {
         modifiedAt ?? Date()
     }
 
-    public var wrappedGoalDate: Date {
+    var wrappedGoalDate: Date {
         goalDate ?? Date()
     }
-
-
-
-
 }
 
-// MARK: Generated accessors for historyRecords
+// MARK: Generated accessors for records
 extension Counter {
 
-    @objc(addHistoryRecordsObject:)
-    @NSManaged public func addToHistoryRecords(_ value: CounterHistoryRecord)
+    @objc(addRecordsObject:)
+    @NSManaged public func addToRecords(_ value: Record)
 
-    @objc(removeHistoryRecordsObject:)
-    @NSManaged public func removeFromHistoryRecords(_ value: CounterHistoryRecord)
+    @objc(removeRecordsObject:)
+    @NSManaged public func removeFromRecords(_ value: Record)
 
-    @objc(addHistoryRecords:)
-    @NSManaged public func addToHistoryRecords(_ values: NSSet)
+    @objc(addRecords:)
+    @NSManaged public func addToRecords(_ values: NSSet)
 
-    @objc(removeHistoryRecords:)
-    @NSManaged public func removeFromHistoryRecords(_ values: NSSet)
+    @objc(removeRecords:)
+    @NSManaged public func removeFromRecords(_ values: NSSet)
 
 }
 

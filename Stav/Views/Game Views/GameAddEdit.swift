@@ -24,8 +24,6 @@ struct GameAddEdit: View {
     private var players: [Player]?
     var game: Game?
 
-
-    
     private var isValid: Bool {
         !name.isEmpty && name.count < 16 && !playerTemplates.isEmpty && playerTemplates.count < 9
         && playerTemplates.filter({ $0.name.isEmpty }).isEmpty
@@ -37,7 +35,7 @@ struct GameAddEdit: View {
             self.name = game.wrappedName
             self.selectedColor = game.wrappedColor
             self.selectedIcon = game.wrappedIcon
-            self.players = game.gamePlayers?.toArray()
+            self.players = game.players?.toArray()
             
         }
     }
