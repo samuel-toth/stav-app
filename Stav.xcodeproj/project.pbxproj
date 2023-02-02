@@ -1,0 +1,1051 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3917D2A82942A89B004B9F37 /* StavWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3917D2A72942A89B004B9F37 /* StavWatchApp.swift */; };
+		3917D2AA2942A89B004B9F37 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3917D2A92942A89B004B9F37 /* ContentView.swift */; };
+		3917D2AC2942A89B004B9F37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3917D2AB2942A89B004B9F37 /* Assets.xcassets */; };
+		3917D2AF2942A89B004B9F37 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3917D2AE2942A89B004B9F37 /* Preview Assets.xcassets */; };
+		3917D2B22942A89B004B9F37 /* Stav.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 3917D2A52942A89B004B9F37 /* Stav.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3918312E29255B190091F9E1 /* StavApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3918312D29255B190091F9E1 /* StavApp.swift */; };
+		3918313029255B190091F9E1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3918312F29255B190091F9E1 /* ContentView.swift */; };
+		3918313229255B190091F9E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3918313129255B190091F9E1 /* Assets.xcassets */; };
+		3918313529255B190091F9E1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3918313429255B190091F9E1 /* Preview Assets.xcassets */; };
+		3918313729255B190091F9E1 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3918313629255B190091F9E1 /* PersistenceController.swift */; };
+		3918314429255B190091F9E1 /* StavTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3918314329255B190091F9E1 /* StavTests.swift */; };
+		3918314E29255B190091F9E1 /* StavUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3918314D29255B190091F9E1 /* StavUITests.swift */; };
+		3918315029255B190091F9E1 /* StavUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3918314F29255B190091F9E1 /* StavUITestsLaunchTests.swift */; };
+		3918315E29255B930091F9E1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3918316029255B930091F9E1 /* Localizable.strings */; };
+		3918316529255E700091F9E1 /* CounterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3918316429255E700091F9E1 /* CounterList.swift */; };
+		3918316729255E8A0091F9E1 /* CounterDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3918316629255E8A0091F9E1 /* CounterDetail.swift */; };
+		3918316929255EA30091F9E1 /* CounterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3918316829255EA30091F9E1 /* CounterRow.swift */; };
+		3918316D29255EDC0091F9E1 /* CounterHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3918316C29255EDC0091F9E1 /* CounterHistory.swift */; };
+		3918317229255F250091F9E1 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3918317129255F250091F9E1 /* ColorPicker.swift */; };
+		3918317429255F320091F9E1 /* IconPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3918317329255F320091F9E1 /* IconPicker.swift */; };
+		3918317729255FB80091F9E1 /* IntervalRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3918317629255FB80091F9E1 /* IntervalRange.swift */; };
+		3918317929255FCC0091F9E1 /* GameStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3918317829255FCC0091F9E1 /* GameStatus.swift */; };
+		3918317B29255FF00091F9E1 /* SelectedSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3918317A29255FF00091F9E1 /* SelectedSort.swift */; };
+		3918317E292560160091F9E1 /* RefreshTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3918317D292560160091F9E1 /* RefreshTimer.swift */; };
+		39183180292560410091F9E1 /* StatisticsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3918317F292560410091F9E1 /* StatisticsHandler.swift */; };
+		391831832925606D0091F9E1 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391831822925606D0091F9E1 /* DateExtension.swift */; };
+		391831852925608C0091F9E1 /* NSSetExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391831842925608C0091F9E1 /* NSSetExtension.swift */; };
+		391831872925609B0091F9E1 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391831862925609B0091F9E1 /* StringExtension.swift */; };
+		39183189292560C80091F9E1 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39183188292560C80091F9E1 /* ViewExtension.swift */; };
+		3918318C292561240091F9E1 /* CounterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3918318B292561240091F9E1 /* CounterManager.swift */; };
+		3918318E292561420091F9E1 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3918318D292561420091F9E1 /* GameManager.swift */; };
+		39183191292561B50091F9E1 /* GameList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39183190292561B50091F9E1 /* GameList.swift */; };
+		39183193292561C80091F9E1 /* GameDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39183192292561C80091F9E1 /* GameDetail.swift */; };
+		39183197292561F70091F9E1 /* GameRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39183196292561F70091F9E1 /* GameRow.swift */; };
+		39183199292562220091F9E1 /* PlayerRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39183198292562220091F9E1 /* PlayerRow.swift */; };
+		3918319B292562480091F9E1 /* GameHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3918319A292562480091F9E1 /* GameHistory.swift */; };
+		3918319D292562610091F9E1 /* PlayerHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3918319C292562610091F9E1 /* PlayerHistory.swift */; };
+		391F59562931051700DC1A89 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 391F59552931051700DC1A89 /* Localizable.stringsdict */; };
+		3924140B2925AE4B00CB8A2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3924140A2925AE4B00CB8A2B /* LaunchScreen.storyboard */; };
+		3937515629268131004E5E90 /* CounterAddEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3937515529268131004E5E90 /* CounterAddEdit.swift */; };
+		3937515829268642004E5E90 /* GameAddEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3937515729268642004E5E90 /* GameAddEdit.swift */; };
+		393751722926932D004E5E90 /* Stav.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 393751702926932D004E5E90 /* Stav.xcdatamodeld */; };
+		3941BF37298C7B42008FC61F /* Record+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3941BF2D298C7B42008FC61F /* Record+CoreDataClass.swift */; };
+		3941BF38298C7B42008FC61F /* Datum+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3941BF2E298C7B42008FC61F /* Datum+CoreDataClass.swift */; };
+		3941BF39298C7B42008FC61F /* Counter+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3941BF2F298C7B42008FC61F /* Counter+CoreDataProperties.swift */; };
+		3941BF3A298C7B42008FC61F /* Record+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3941BF30298C7B42008FC61F /* Record+CoreDataProperties.swift */; };
+		3941BF3B298C7B42008FC61F /* Counter+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3941BF31298C7B42008FC61F /* Counter+CoreDataClass.swift */; };
+		3941BF3C298C7B42008FC61F /* Datum+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3941BF32298C7B42008FC61F /* Datum+CoreDataProperties.swift */; };
+		3941BF3D298C7B42008FC61F /* Player+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3941BF33298C7B42008FC61F /* Player+CoreDataClass.swift */; };
+		3941BF3E298C7B42008FC61F /* Game+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3941BF34298C7B42008FC61F /* Game+CoreDataProperties.swift */; };
+		3941BF3F298C7B42008FC61F /* Game+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3941BF35298C7B42008FC61F /* Game+CoreDataClass.swift */; };
+		3941BF40298C7B42008FC61F /* Player+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3941BF36298C7B42008FC61F /* Player+CoreDataProperties.swift */; };
+		39A1595D292EA24E0042F29D /* DateList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A1595C292EA24E0042F29D /* DateList.swift */; };
+		39A1595F292EA5970042F29D /* DateAddEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A1595E292EA5970042F29D /* DateAddEdit.swift */; };
+		39ED8258292FED300025BD5B /* DatumManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39ED8257292FED300025BD5B /* DatumManager.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3917D2B02942A89B004B9F37 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3918312229255B180091F9E1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3917D2A42942A89B004B9F37;
+			remoteInfo = "stavwatch Watch App";
+		};
+		3918314029255B190091F9E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3918312229255B180091F9E1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3918312929255B190091F9E1;
+			remoteInfo = Stav;
+		};
+		3918314A29255B190091F9E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3918312229255B180091F9E1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3918312929255B190091F9E1;
+			remoteInfo = Stav;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3917D2672942A038004B9F37 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				3917D2B22942A89B004B9F37 /* Stav.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		3917D2A52942A89B004B9F37 /* Stav.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stav.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3917D2A72942A89B004B9F37 /* StavWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StavWatchApp.swift; sourceTree = "<group>"; };
+		3917D2A92942A89B004B9F37 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3917D2AB2942A89B004B9F37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3917D2AE2942A89B004B9F37 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3918312A29255B190091F9E1 /* Stav.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stav.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3918312D29255B190091F9E1 /* StavApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StavApp.swift; sourceTree = "<group>"; };
+		3918312F29255B190091F9E1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3918313129255B190091F9E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3918313429255B190091F9E1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3918313629255B190091F9E1 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		3918313F29255B190091F9E1 /* StavTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StavTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3918314329255B190091F9E1 /* StavTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StavTests.swift; sourceTree = "<group>"; };
+		3918314929255B190091F9E1 /* StavUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StavUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3918314D29255B190091F9E1 /* StavUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StavUITests.swift; sourceTree = "<group>"; };
+		3918314F29255B190091F9E1 /* StavUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StavUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3918315F29255B930091F9E1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3918316129255B970091F9E1 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3918316429255E700091F9E1 /* CounterList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterList.swift; sourceTree = "<group>"; };
+		3918316629255E8A0091F9E1 /* CounterDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterDetail.swift; sourceTree = "<group>"; };
+		3918316829255EA30091F9E1 /* CounterRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterRow.swift; sourceTree = "<group>"; };
+		3918316C29255EDC0091F9E1 /* CounterHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterHistory.swift; sourceTree = "<group>"; };
+		3918317129255F250091F9E1 /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
+		3918317329255F320091F9E1 /* IconPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPicker.swift; sourceTree = "<group>"; };
+		3918317629255FB80091F9E1 /* IntervalRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalRange.swift; sourceTree = "<group>"; };
+		3918317829255FCC0091F9E1 /* GameStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStatus.swift; sourceTree = "<group>"; };
+		3918317A29255FF00091F9E1 /* SelectedSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedSort.swift; sourceTree = "<group>"; };
+		3918317D292560160091F9E1 /* RefreshTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshTimer.swift; sourceTree = "<group>"; };
+		3918317F292560410091F9E1 /* StatisticsHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsHandler.swift; sourceTree = "<group>"; };
+		391831822925606D0091F9E1 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		391831842925608C0091F9E1 /* NSSetExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSSetExtension.swift; sourceTree = "<group>"; };
+		391831862925609B0091F9E1 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		39183188292560C80091F9E1 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		3918318B292561240091F9E1 /* CounterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterManager.swift; sourceTree = "<group>"; };
+		3918318D292561420091F9E1 /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
+		39183190292561B50091F9E1 /* GameList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameList.swift; sourceTree = "<group>"; };
+		39183192292561C80091F9E1 /* GameDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetail.swift; sourceTree = "<group>"; };
+		39183196292561F70091F9E1 /* GameRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRow.swift; sourceTree = "<group>"; };
+		39183198292562220091F9E1 /* PlayerRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRow.swift; sourceTree = "<group>"; };
+		3918319A292562480091F9E1 /* GameHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHistory.swift; sourceTree = "<group>"; };
+		3918319C292562610091F9E1 /* PlayerHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerHistory.swift; sourceTree = "<group>"; };
+		391F59552931051700DC1A89 /* Localizable.stringsdict */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
+		3924140A2925AE4B00CB8A2B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3937515529268131004E5E90 /* CounterAddEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterAddEdit.swift; sourceTree = "<group>"; };
+		3937515729268642004E5E90 /* GameAddEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAddEdit.swift; sourceTree = "<group>"; };
+		393751712926932D004E5E90 /* Stav.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Stav.xcdatamodel; sourceTree = "<group>"; };
+		3941BF2D298C7B42008FC61F /* Record+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Record+CoreDataClass.swift"; sourceTree = "<group>"; };
+		3941BF2E298C7B42008FC61F /* Datum+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Datum+CoreDataClass.swift"; sourceTree = "<group>"; };
+		3941BF2F298C7B42008FC61F /* Counter+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Counter+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		3941BF30298C7B42008FC61F /* Record+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Record+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		3941BF31298C7B42008FC61F /* Counter+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Counter+CoreDataClass.swift"; sourceTree = "<group>"; };
+		3941BF32298C7B42008FC61F /* Datum+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Datum+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		3941BF33298C7B42008FC61F /* Player+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+CoreDataClass.swift"; sourceTree = "<group>"; };
+		3941BF34298C7B42008FC61F /* Game+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Game+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		3941BF35298C7B42008FC61F /* Game+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Game+CoreDataClass.swift"; sourceTree = "<group>"; };
+		3941BF36298C7B42008FC61F /* Player+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		39A1595C292EA24E0042F29D /* DateList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateList.swift; sourceTree = "<group>"; };
+		39A1595E292EA5970042F29D /* DateAddEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAddEdit.swift; sourceTree = "<group>"; };
+		39ED8257292FED300025BD5B /* DatumManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatumManager.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3917D2A22942A89B004B9F37 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3918312729255B190091F9E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3918313C29255B190091F9E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3918314629255B190091F9E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3917D2A62942A89B004B9F37 /* StavWatchApp */ = {
+			isa = PBXGroup;
+			children = (
+				3917D2A72942A89B004B9F37 /* StavWatchApp.swift */,
+				3917D2A92942A89B004B9F37 /* ContentView.swift */,
+				3917D2AB2942A89B004B9F37 /* Assets.xcassets */,
+				3917D2AD2942A89B004B9F37 /* Preview Content */,
+			);
+			path = StavWatchApp;
+			sourceTree = "<group>";
+		};
+		3917D2AD2942A89B004B9F37 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				3917D2AE2942A89B004B9F37 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3918312129255B180091F9E1 = {
+			isa = PBXGroup;
+			children = (
+				3918312C29255B190091F9E1 /* Stav */,
+				3918314229255B190091F9E1 /* StavTests */,
+				3918314C29255B190091F9E1 /* StavUITests */,
+				3917D2A62942A89B004B9F37 /* StavWatchApp */,
+				3918312B29255B190091F9E1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3918312B29255B190091F9E1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3918312A29255B190091F9E1 /* Stav.app */,
+				3918313F29255B190091F9E1 /* StavTests.xctest */,
+				3918314929255B190091F9E1 /* StavUITests.xctest */,
+				3917D2A52942A89B004B9F37 /* Stav.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3918312C29255B190091F9E1 /* Stav */ = {
+			isa = PBXGroup;
+			children = (
+				394416C629258AEC00B4D63A /* Model */,
+				3918318A292560F50091F9E1 /* Persistence */,
+				39183181292560610091F9E1 /* Extensions */,
+				3918317529255FA90091F9E1 /* Enums */,
+				3918317C292560080091F9E1 /* Utilities */,
+				3918316229255E0C0091F9E1 /* Views */,
+				3918312D29255B190091F9E1 /* StavApp.swift */,
+				3918313129255B190091F9E1 /* Assets.xcassets */,
+				393751702926932D004E5E90 /* Stav.xcdatamodeld */,
+				3924140A2925AE4B00CB8A2B /* LaunchScreen.storyboard */,
+				391F59552931051700DC1A89 /* Localizable.stringsdict */,
+				3918316029255B930091F9E1 /* Localizable.strings */,
+				3918313329255B190091F9E1 /* Preview Content */,
+			);
+			path = Stav;
+			sourceTree = "<group>";
+		};
+		3918313329255B190091F9E1 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				3918313429255B190091F9E1 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3918314229255B190091F9E1 /* StavTests */ = {
+			isa = PBXGroup;
+			children = (
+				3918314329255B190091F9E1 /* StavTests.swift */,
+			);
+			path = StavTests;
+			sourceTree = "<group>";
+		};
+		3918314C29255B190091F9E1 /* StavUITests */ = {
+			isa = PBXGroup;
+			children = (
+				3918314D29255B190091F9E1 /* StavUITests.swift */,
+				3918314F29255B190091F9E1 /* StavUITestsLaunchTests.swift */,
+			);
+			path = StavUITests;
+			sourceTree = "<group>";
+		};
+		3918316229255E0C0091F9E1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				39A1595B292EA2310042F29D /* Date Views */,
+				3918318F292561A20091F9E1 /* Game Views */,
+				3918317029255F070091F9E1 /* Components */,
+				3918316329255E460091F9E1 /* Counter Views */,
+				3918312F29255B190091F9E1 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3918316329255E460091F9E1 /* Counter Views */ = {
+			isa = PBXGroup;
+			children = (
+				3918316429255E700091F9E1 /* CounterList.swift */,
+				3918316629255E8A0091F9E1 /* CounterDetail.swift */,
+				3918316829255EA30091F9E1 /* CounterRow.swift */,
+				3918316C29255EDC0091F9E1 /* CounterHistory.swift */,
+				3937515529268131004E5E90 /* CounterAddEdit.swift */,
+			);
+			path = "Counter Views";
+			sourceTree = "<group>";
+		};
+		3918317029255F070091F9E1 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				3918317129255F250091F9E1 /* ColorPicker.swift */,
+				3918317329255F320091F9E1 /* IconPicker.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		3918317529255FA90091F9E1 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				3918317629255FB80091F9E1 /* IntervalRange.swift */,
+				3918317829255FCC0091F9E1 /* GameStatus.swift */,
+				3918317A29255FF00091F9E1 /* SelectedSort.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		3918317C292560080091F9E1 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				3918317D292560160091F9E1 /* RefreshTimer.swift */,
+				3918317F292560410091F9E1 /* StatisticsHandler.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		39183181292560610091F9E1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				391831822925606D0091F9E1 /* DateExtension.swift */,
+				391831842925608C0091F9E1 /* NSSetExtension.swift */,
+				391831862925609B0091F9E1 /* StringExtension.swift */,
+				39183188292560C80091F9E1 /* ViewExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3918318A292560F50091F9E1 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				3918313629255B190091F9E1 /* PersistenceController.swift */,
+				3918318B292561240091F9E1 /* CounterManager.swift */,
+				3918318D292561420091F9E1 /* GameManager.swift */,
+				39ED8257292FED300025BD5B /* DatumManager.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		3918318F292561A20091F9E1 /* Game Views */ = {
+			isa = PBXGroup;
+			children = (
+				39183190292561B50091F9E1 /* GameList.swift */,
+				39183192292561C80091F9E1 /* GameDetail.swift */,
+				39183196292561F70091F9E1 /* GameRow.swift */,
+				39183198292562220091F9E1 /* PlayerRow.swift */,
+				3918319A292562480091F9E1 /* GameHistory.swift */,
+				3918319C292562610091F9E1 /* PlayerHistory.swift */,
+				3937515729268642004E5E90 /* GameAddEdit.swift */,
+			);
+			path = "Game Views";
+			sourceTree = "<group>";
+		};
+		394416C629258AEC00B4D63A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3941BF31298C7B42008FC61F /* Counter+CoreDataClass.swift */,
+				3941BF2F298C7B42008FC61F /* Counter+CoreDataProperties.swift */,
+				3941BF2E298C7B42008FC61F /* Datum+CoreDataClass.swift */,
+				3941BF32298C7B42008FC61F /* Datum+CoreDataProperties.swift */,
+				3941BF35298C7B42008FC61F /* Game+CoreDataClass.swift */,
+				3941BF34298C7B42008FC61F /* Game+CoreDataProperties.swift */,
+				3941BF33298C7B42008FC61F /* Player+CoreDataClass.swift */,
+				3941BF36298C7B42008FC61F /* Player+CoreDataProperties.swift */,
+				3941BF2D298C7B42008FC61F /* Record+CoreDataClass.swift */,
+				3941BF30298C7B42008FC61F /* Record+CoreDataProperties.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		39A1595B292EA2310042F29D /* Date Views */ = {
+			isa = PBXGroup;
+			children = (
+				39A1595C292EA24E0042F29D /* DateList.swift */,
+				39A1595E292EA5970042F29D /* DateAddEdit.swift */,
+			);
+			path = "Date Views";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3917D2A42942A89B004B9F37 /* stavwatch Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3917D2B52942A89B004B9F37 /* Build configuration list for PBXNativeTarget "stavwatch Watch App" */;
+			buildPhases = (
+				3917D2A12942A89B004B9F37 /* Sources */,
+				3917D2A22942A89B004B9F37 /* Frameworks */,
+				3917D2A32942A89B004B9F37 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "stavwatch Watch App";
+			productName = "stavwatch Watch App";
+			productReference = 3917D2A52942A89B004B9F37 /* Stav.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3918312929255B190091F9E1 /* Stav */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3918315329255B190091F9E1 /* Build configuration list for PBXNativeTarget "Stav" */;
+			buildPhases = (
+				3918312629255B190091F9E1 /* Sources */,
+				3918312729255B190091F9E1 /* Frameworks */,
+				3918312829255B190091F9E1 /* Resources */,
+				3917D2672942A038004B9F37 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3917D2B12942A89B004B9F37 /* PBXTargetDependency */,
+			);
+			name = Stav;
+			productName = Stav;
+			productReference = 3918312A29255B190091F9E1 /* Stav.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3918313E29255B190091F9E1 /* StavTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3918315629255B190091F9E1 /* Build configuration list for PBXNativeTarget "StavTests" */;
+			buildPhases = (
+				3918313B29255B190091F9E1 /* Sources */,
+				3918313C29255B190091F9E1 /* Frameworks */,
+				3918313D29255B190091F9E1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3918314129255B190091F9E1 /* PBXTargetDependency */,
+			);
+			name = StavTests;
+			productName = StavTests;
+			productReference = 3918313F29255B190091F9E1 /* StavTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3918314829255B190091F9E1 /* StavUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3918315929255B190091F9E1 /* Build configuration list for PBXNativeTarget "StavUITests" */;
+			buildPhases = (
+				3918314529255B190091F9E1 /* Sources */,
+				3918314629255B190091F9E1 /* Frameworks */,
+				3918314729255B190091F9E1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3918314B29255B190091F9E1 /* PBXTargetDependency */,
+			);
+			name = StavUITests;
+			productName = StavUITests;
+			productReference = 3918314929255B190091F9E1 /* StavUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3918312229255B180091F9E1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1400;
+				LastUpgradeCheck = 1400;
+				TargetAttributes = {
+					3917D2A42942A89B004B9F37 = {
+						CreatedOnToolsVersion = 14.0.1;
+					};
+					3918312929255B190091F9E1 = {
+						CreatedOnToolsVersion = 14.0.1;
+					};
+					3918313E29255B190091F9E1 = {
+						CreatedOnToolsVersion = 14.0.1;
+						TestTargetID = 3918312929255B190091F9E1;
+					};
+					3918314829255B190091F9E1 = {
+						CreatedOnToolsVersion = 14.0.1;
+						TestTargetID = 3918312929255B190091F9E1;
+					};
+				};
+			};
+			buildConfigurationList = 3918312529255B180091F9E1 /* Build configuration list for PBXProject "Stav" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				sk,
+				Base,
+			);
+			mainGroup = 3918312129255B180091F9E1;
+			productRefGroup = 3918312B29255B190091F9E1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3918312929255B190091F9E1 /* Stav */,
+				3918313E29255B190091F9E1 /* StavTests */,
+				3918314829255B190091F9E1 /* StavUITests */,
+				3917D2A42942A89B004B9F37 /* stavwatch Watch App */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3917D2A32942A89B004B9F37 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3917D2AF2942A89B004B9F37 /* Preview Assets.xcassets in Resources */,
+				3917D2AC2942A89B004B9F37 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3918312829255B190091F9E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3918313529255B190091F9E1 /* Preview Assets.xcassets in Resources */,
+				3924140B2925AE4B00CB8A2B /* LaunchScreen.storyboard in Resources */,
+				3918315E29255B930091F9E1 /* Localizable.strings in Resources */,
+				391F59562931051700DC1A89 /* Localizable.stringsdict in Resources */,
+				3918313229255B190091F9E1 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3918313D29255B190091F9E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3918314729255B190091F9E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3917D2A12942A89B004B9F37 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3917D2AA2942A89B004B9F37 /* ContentView.swift in Sources */,
+				3917D2A82942A89B004B9F37 /* StavWatchApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3918312629255B190091F9E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3941BF37298C7B42008FC61F /* Record+CoreDataClass.swift in Sources */,
+				3941BF38298C7B42008FC61F /* Datum+CoreDataClass.swift in Sources */,
+				3941BF39298C7B42008FC61F /* Counter+CoreDataProperties.swift in Sources */,
+				3941BF3A298C7B42008FC61F /* Record+CoreDataProperties.swift in Sources */,
+				3941BF3B298C7B42008FC61F /* Counter+CoreDataClass.swift in Sources */,
+				3941BF3C298C7B42008FC61F /* Datum+CoreDataProperties.swift in Sources */,
+				3941BF3D298C7B42008FC61F /* Player+CoreDataClass.swift in Sources */,
+				3941BF3E298C7B42008FC61F /* Game+CoreDataProperties.swift in Sources */,
+				3941BF3F298C7B42008FC61F /* Game+CoreDataClass.swift in Sources */,
+				3941BF40298C7B42008FC61F /* Player+CoreDataProperties.swift in Sources */,
+				3918319D292562610091F9E1 /* PlayerHistory.swift in Sources */,
+				3918316529255E700091F9E1 /* CounterList.swift in Sources */,
+				39183197292561F70091F9E1 /* GameRow.swift in Sources */,
+				3918317729255FB80091F9E1 /* IntervalRange.swift in Sources */,
+				39183189292560C80091F9E1 /* ViewExtension.swift in Sources */,
+				3918317929255FCC0091F9E1 /* GameStatus.swift in Sources */,
+				3918317429255F320091F9E1 /* IconPicker.swift in Sources */,
+				3937515829268642004E5E90 /* GameAddEdit.swift in Sources */,
+				3918313729255B190091F9E1 /* PersistenceController.swift in Sources */,
+				39183191292561B50091F9E1 /* GameList.swift in Sources */,
+				3918313029255B190091F9E1 /* ContentView.swift in Sources */,
+				391831852925608C0091F9E1 /* NSSetExtension.swift in Sources */,
+				3918317B29255FF00091F9E1 /* SelectedSort.swift in Sources */,
+				3918317229255F250091F9E1 /* ColorPicker.swift in Sources */,
+				39ED8258292FED300025BD5B /* DatumManager.swift in Sources */,
+				3918316729255E8A0091F9E1 /* CounterDetail.swift in Sources */,
+				39A1595F292EA5970042F29D /* DateAddEdit.swift in Sources */,
+				3918318E292561420091F9E1 /* GameManager.swift in Sources */,
+				39183180292560410091F9E1 /* StatisticsHandler.swift in Sources */,
+				3937515629268131004E5E90 /* CounterAddEdit.swift in Sources */,
+				393751722926932D004E5E90 /* Stav.xcdatamodeld in Sources */,
+				391831872925609B0091F9E1 /* StringExtension.swift in Sources */,
+				3918312E29255B190091F9E1 /* StavApp.swift in Sources */,
+				3918318C292561240091F9E1 /* CounterManager.swift in Sources */,
+				39183193292561C80091F9E1 /* GameDetail.swift in Sources */,
+				391831832925606D0091F9E1 /* DateExtension.swift in Sources */,
+				39A1595D292EA24E0042F29D /* DateList.swift in Sources */,
+				39183199292562220091F9E1 /* PlayerRow.swift in Sources */,
+				3918316929255EA30091F9E1 /* CounterRow.swift in Sources */,
+				3918317E292560160091F9E1 /* RefreshTimer.swift in Sources */,
+				3918316D29255EDC0091F9E1 /* CounterHistory.swift in Sources */,
+				3918319B292562480091F9E1 /* GameHistory.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3918313B29255B190091F9E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3918314429255B190091F9E1 /* StavTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3918314529255B190091F9E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3918315029255B190091F9E1 /* StavUITestsLaunchTests.swift in Sources */,
+				3918314E29255B190091F9E1 /* StavUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3917D2B12942A89B004B9F37 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3917D2A42942A89B004B9F37 /* stavwatch Watch App */;
+			targetProxy = 3917D2B02942A89B004B9F37 /* PBXContainerItemProxy */;
+		};
+		3918314129255B190091F9E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3918312929255B190091F9E1 /* Stav */;
+			targetProxy = 3918314029255B190091F9E1 /* PBXContainerItemProxy */;
+		};
+		3918314B29255B190091F9E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3918312929255B190091F9E1 /* Stav */;
+			targetProxy = 3918314A29255B190091F9E1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3918316029255B930091F9E1 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3918315F29255B930091F9E1 /* en */,
+				3918316129255B970091F9E1 /* sk */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3917D2B32942A89B004B9F37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"StavWatchApp/Preview Content\"";
+				DEVELOPMENT_TEAM = GRPTYDVUW9;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = sk.samueltoth.stav;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sk.samueltoth.stav.watchkitapp;
+				PRODUCT_NAME = Stav;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		3917D2B42942A89B004B9F37 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"StavWatchApp/Preview Content\"";
+				DEVELOPMENT_TEAM = GRPTYDVUW9;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = sk.samueltoth.stav;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sk.samueltoth.stav.watchkitapp;
+				PRODUCT_NAME = Stav;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
+		3918315129255B190091F9E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3918315229255B190091F9E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3918315429255B190091F9E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Stav/Preview Content\"";
+				DEVELOPMENT_TEAM = GRPTYDVUW9;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Stav;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sk.samueltoth.stav;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3918315529255B190091F9E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Stav/Preview Content\"";
+				DEVELOPMENT_TEAM = GRPTYDVUW9;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Stav;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sk.samueltoth.stav;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3918315729255B190091F9E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GRPTYDVUW9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sk.samueltoth.StavTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Stav.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Stav";
+			};
+			name = Debug;
+		};
+		3918315829255B190091F9E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GRPTYDVUW9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sk.samueltoth.StavTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Stav.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Stav";
+			};
+			name = Release;
+		};
+		3918315A29255B190091F9E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GRPTYDVUW9;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sk.samueltoth.StavUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Stav;
+			};
+			name = Debug;
+		};
+		3918315B29255B190091F9E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GRPTYDVUW9;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sk.samueltoth.StavUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Stav;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3917D2B52942A89B004B9F37 /* Build configuration list for PBXNativeTarget "stavwatch Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3917D2B32942A89B004B9F37 /* Debug */,
+				3917D2B42942A89B004B9F37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3918312529255B180091F9E1 /* Build configuration list for PBXProject "Stav" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3918315129255B190091F9E1 /* Debug */,
+				3918315229255B190091F9E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3918315329255B190091F9E1 /* Build configuration list for PBXNativeTarget "Stav" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3918315429255B190091F9E1 /* Debug */,
+				3918315529255B190091F9E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3918315629255B190091F9E1 /* Build configuration list for PBXNativeTarget "StavTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3918315729255B190091F9E1 /* Debug */,
+				3918315829255B190091F9E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3918315929255B190091F9E1 /* Build configuration list for PBXNativeTarget "StavUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3918315A29255B190091F9E1 /* Debug */,
+				3918315B29255B190091F9E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		393751702926932D004E5E90 /* Stav.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				393751712926932D004E5E90 /* Stav.xcdatamodel */,
+			);
+			currentVersion = 393751712926932D004E5E90 /* Stav.xcdatamodel */;
+			path = Stav.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 3918312229255B180091F9E1 /* Project object */;
+}
