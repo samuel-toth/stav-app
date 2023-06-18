@@ -6,16 +6,14 @@
 //
 
 import SwiftUI
-import CoreData
+import SwiftData
 import Charts
 
 struct CounterDetail: View {
-    
-    @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.modelContext) private var modelContext
     @Environment(\.presentationMode) var presentationMode
     
-    @ObservedObject var counter: Counter
-    //@StateObject public var rT: RefreshTimer
+    @Observable var counter: Counter
     
     @State private var isStatisticsExpanded: Bool = false
     @State private var isHistoryExpanded: Bool = false
@@ -25,30 +23,11 @@ struct CounterDetail: View {
     @State private var showDeleteAlert = false
     @State private var showResetAlert = false
     @State private var selectedRange = IntervalRange.daily
-    
+    @State private var selectedNumber = 1
     @State private var offset = 0
     
-    private var historyRecords: [Record]
-    private var statisticsHandler: StatisticsHandler = StatisticsHandler.shared
-    
-    
-    @State private var selectedNumber = 1
-    
-    
-    
-    
-    init(counter: Counter) {
-        self.counter = counter
-        
-        let request: NSFetchRequest<Record> = Record.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(keyPath: \Record.timestamp, ascending: false)]
-        request.predicate = NSPredicate(format: "counter == %@", counter)
-        
-        historyRecords = try! PersistenceController.shared.container.viewContext.fetch(request)
-        
-        //self._rT = StateObject(wrappedValue: RefreshTimer())
-    }
-    
+    // private var statisticsHandler: StatisticsHandler = StatisticsHandler.shared
+            
     var body: some View {
         ScrollView {
             VStack(alignment: .center) {
@@ -57,7 +36,7 @@ struct CounterDetail: View {
                     .font(.system(size:90))
                     .fontWeight(Font.Weight.semibold)
                     .padding([.bottom], 10)
-                    .foregroundColor(Color(counter.wrappedColor))
+                    .foregroundColor(Color(counter.color))
                 
                 
                 
@@ -65,19 +44,20 @@ struct CounterDetail: View {
                     HStack {
                         Button(action: {
                             UIImpactFeedbackGenerator(style: .soft).impactOccurred()
-                            CounterManager.shared.updateCounterValue(counter: counter, value: selectedNumber)
+                            counter.value += selectedNumber
+                            let newHistoryRecord = HistoryRecord(value: selectedNumber, totalValue: counter.value)
+                            counter.records.append(newHistoryRecord)
                         }) {
                             Image(systemName: "plus.circle")
                                 .font(.system(size: 80))
                         }
                         .padding([.leading, .trailing], 40)
                         
-                        
-                        
-                        
                         Button(action: {
                             UIImpactFeedbackGenerator(style: .soft).impactOccurred()
-                            CounterManager.shared.updateCounterValue(counter: counter, value: -selectedNumber)
+                            counter.value -= selectedNumber
+                            let newHistoryRecord = HistoryRecord(value: -selectedNumber, totalValue: counter.value)
+                            counter.records.append(newHistoryRecord)
                         }) {
                             Image(systemName: "minus.circle")
                                 .font(.system(size: 80))
@@ -101,18 +81,18 @@ struct CounterDetail: View {
                 
                 if counter.hasGoal {
                     VStack {
-                        Gauge(value: Double(counter.value), in: 0...Double(counter.goalValue)) {
+                        Gauge(value: Double(counter.value), in: 0...Double(counter.goalValue ?? 0)) {
                         } currentValueLabel: {
                         } minimumValueLabel: {
                             Text("0")
                         } maximumValueLabel: {
-                            Text("\(Int(counter.goalValue))")
+                            Text("\(Int(counter.goalValue ?? 0))")
                         }
                         .gaugeStyle(.accessoryLinear)
-                        .tint(Color(counter.wrappedColor))
+                        .tint(Color(counter.color))
                         .foregroundColor(Color(UIColor.secondaryLabel))
                         
-                        if counter.value < counter.goalValue {
+                        if counter.value < counter.goalValue ?? 0 {
                             Text(counter.goalDate?.localizedTimeRemaining() ?? "")
                                 .foregroundColor(Color(UIColor.secondaryLabel))
                         } else {
@@ -126,80 +106,80 @@ struct CounterDetail: View {
                 
                 Divider()
                 
-                DisclosureGroup("statistics", isExpanded: $isStatisticsExpanded.animation()) {
-                    VStack {
-                        if historyRecords.count > 2 {
-                            
-                            Chart(historyRecords.reversed().suffix(20 + 20*offset)) { record in
-                                LineMark(x: .value("date", record.timestamp ?? Date(), unit: .minute), y: .value("value", record.result))
-                                //PointMark(x: .value(dateString, record.timestamp ?? Date(), unit: .day), y: .value(valueString, record.result))
-                            }
-                            .chartXAxis(content: {
-                                AxisMarks(values: .automatic) { value in
-                                    AxisValueLabel()
-                                }
-                            })
-                            .gesture(DragGesture()
-                                .onEnded { value in
-                                    let direction = detectDirection(value: value)
-                                    if direction == .right && offset > 0 {
-                                        offset -= 1
-                                    } else if direction == .left && (offset + 1) * 20 < historyRecords.count {
-                                        offset += 1
-                                    }
-                                }
-                            )
-                            .padding()
-                            .frame(height: 200)
-                        }
-                        
-                        ExtractedView(labelText: "lastChange", mainText: counter.wrappedModifiedAt.dateToFormattedDatetime())
-                        ExtractedView(labelText: "createdAt", mainText: counter.wrappedCreatedAt.dateToFormattedDate())
-                        
-                        if counter.hasGoal {
-                            ExtractedView(labelText: "goalDate", mainText: counter.wrappedGoalDate.dateToFormattedDate())
-                        }
-                        
-                        Divider()
-                        
-                        HStack {
-                            Spacer()
-                            Picker("interval", selection: $selectedRange) {
-                                ForEach(IntervalRange.allCases, id: \.self) { interval in
-                                    Text(LocalizedStringKey(interval.rawValue))
-                                }
-                            }
-                        }
-                        
-                        let computedVar = StatisticsHandler.shared.groupHistoryRecordsForInterval(historyRecords: historyRecords, interval: selectedRange)
-                        ExtractedView(labelText: "average", mainText: String(format: "%.3f", computedVar.average))
-                        ExtractedView(labelText: "minimum", mainText: "\(computedVar.min)")
-                        ExtractedView(labelText: "maximum", mainText: "\(computedVar.max)")
-                        
-                    }
-                    .padding(.top, 10)
-                }
-                .padding([.trailing,.leading], 20)
+                //                DisclosureGroup("statistics", isExpanded: $isStatisticsExpanded.animation()) {
+                //                    VStack {
+                //                        if historyRecords.count > 2 {
+                //
+                //                            Chart(historyRecords.reversed().suffix(20 + 20*offset)) { record in
+                //                                LineMark(x: .value("date", record.timestamp ?? Date(), unit: .minute), y: .value("value", record.result))
+                //                                //PointMark(x: .value(dateString, record.timestamp ?? Date(), unit: .day), y: .value(valueString, record.result))
+                //                            }
+                //                            .chartXAxis(content: {
+                //                                AxisMarks(values: .automatic) { value in
+                //                                    AxisValueLabel()
+                //                                }
+                //                            })
+                //                            .gesture(DragGesture()
+                //                                .onEnded { value in
+                //                                    let direction = detectDirection(value: value)
+                //                                    if direction == .right && offset > 0 {
+                //                                        offset -= 1
+                //                                    } else if direction == .left && (offset + 1) * 20 < historyRecords.count {
+                //                                        offset += 1
+                //                                    }
+                //                                }
+                //                            )
+                //                            .padding()
+                //                            .frame(height: 200)
+                //                        }
+                //
+                //                        ExtractedView(labelText: "lastChange", mainText: counter.modifiedAt.dateToFormattedDatetime())
+                //                        ExtractedView(labelText: "createdAt", mainText: counter.createdAt.dateToFormattedDate())
+                //
+                //                        if counter.hasGoal {
+                //                            ExtractedView(labelText: "goalDate", mainText: counter.goalDate!.dateToFormattedDate())
+                //                        }
+                //
+                //                        Divider()
+                //
+                //                        HStack {
+                //                            Spacer()
+                //                            Picker("interval", selection: $selectedRange) {
+                //                                ForEach(IntervalRange.allCases, id: \.self) { interval in
+                //                                    Text(LocalizedStringKey(interval.rawValue))
+                //                                }
+                //                            }
+                //                        }
+                //
+                //                        let computedVar = StatisticsHandler.shared.groupHistoryRecordsForInterval(historyRecords: historyRecords, interval: selectedRange)
+                //                        ExtractedView(labelText: "average", mainText: String(format: "%.3f", computedVar.average))
+                //                        ExtractedView(labelText: "minimum", mainText: "\(computedVar.min)")
+                //                        ExtractedView(labelText: "maximum", mainText: "\(computedVar.max)")
+                //
+                //                    }
+                //                    .padding(.top, 10)
+                //                }
+                //                .padding([.trailing,.leading], 20)
                 
                 
                 DisclosureGroup("history", isExpanded: $isHistoryExpanded.animation()) {
                     VStack {
-                        if historyRecords.count == 0 {
+                        if counter.records.isEmpty {
                             Text("noRecords")
                         }
-                        ForEach(historyRecords.prefix(5)) { record in
+                        ForEach(counter.records.prefix(5)) { record in
                             HStack {
-                                Text(record.wrappedTimestamp.dateToFormattedDatetime() )
+                                Text(record.timestamp.dateToFormattedDatetime() )
                                 Spacer()
                                 Text(record.value > 0 ? "+\(record.value)" : "\(record.value)")
                                 Divider()
-                                Text("\(record.result)")
+                                Text("\(record.totalValue)")
                                     .fontWeight(.bold)
                                     .frame(width: 50, alignment: .trailing)
                             }
                         }
                         
-                        if historyRecords.count > 5 {
+                        if counter.records.count > 5 {
                             Button(action: {
                                 showHistorySheet.toggle()
                             }) {
@@ -217,14 +197,14 @@ struct CounterDetail: View {
                         .alert(isPresented: $showResetAlert) {
                             Alert(
                                 title: Text("youSure"),
-                                message: Text("resetCounter \(counter.wrappedName)"),
+                                message: Text("resetCounter \(counter.name)"),
                                 primaryButton: .default(
                                     Text("cancel")
                                 ),
                                 secondaryButton: .destructive(
                                     Text("reset"),
                                     action: {
-                                        CounterManager.shared.resetCounter(counter: counter)
+                                        // TODO: Reset counter
                                     }
                                 )
                             )
@@ -233,14 +213,14 @@ struct CounterDetail: View {
                         .alert(isPresented: $showDeleteAlert) {
                             Alert(
                                 title: Text("youSure"),
-                                message: Text("deleteCounter \(counter.wrappedName)"),
+                                message: Text("deleteCounter \(counter.name)"),
                                 primaryButton: .default(
                                     Text("cancel")
                                 ),
                                 secondaryButton: .destructive(
                                     Text("delete"),
                                     action: {
-                                        viewContext.delete(counter)
+                                        modelContext.delete(counter)
                                         presentationMode.wrappedValue.dismiss()
                                     }
                                 )
@@ -250,7 +230,7 @@ struct CounterDetail: View {
             }
         }
         .sheet(isPresented: $showHistorySheet) {
-            CounterHistory(counter: counter, historyRecords: historyRecords)
+            CounterHistory(counter: counter, historyRecords: counter.records)
         }
         .sheet(isPresented: $showEditSheet) {
             CounterAddEdit(counterToEdit: counter)
@@ -258,19 +238,19 @@ struct CounterDetail: View {
         .toolbar {
             ToolbarItem(placement: .principal) {
                 HStack {
-                    Image(systemName: counter.wrappedIcon)
+                    Image(systemName: counter.icon )
                         .font(.system(size: 25))
-                        .foregroundColor(Color(counter.wrappedColor))
-                    Text(counter.wrappedName)
+                        .foregroundColor(Color(counter.color))
+                    Text(counter.name)
                         .font(.system(size: 25))
                         .fontWeight(Font.Weight.semibold)
-                        .foregroundColor(Color(counter.wrappedColor))
+                        .foregroundColor(Color(counter.color))
                 }
             }
             
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
-                    CounterManager.shared.toggleFavourite(counter: counter)
+                    counter.isFavourite.toggle()
                 }) {
                     Image(systemName: counter.isFavourite ? "heart.fill" : "heart")
                 }
@@ -302,43 +282,19 @@ struct CounterDetail: View {
             }
         }
     }
-    
-    
-    
-    enum SwipeHVDirection: String {
-        case left, right, up, down, none
-    }
-    
-    func detectDirection(value: DragGesture.Value) -> SwipeHVDirection {
-        if value.startLocation.x < value.location.x - 24 {
-            return .left
-        }
-        if value.startLocation.x > value.location.x + 24 {
-            return .right
-        }
-        if value.startLocation.y < value.location.y - 24 {
-            return .down
-        }
-        if value.startLocation.y > value.location.y + 24 {
-            return .up
-        }
-        return .none
-    }
 }
 
 
-struct CounterDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        
-        let counter = CounterManager.shared.createTestData()
-        
-        return NavigationStack {
-            CounterDetail(counter: counter).environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
-                .environment(\.locale, .init(identifier: "sk"))
-            
-        }
-    }
-}
+//struct CounterDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//
+//        let counter = CounterManager.shared.createTestData()
+//
+//        return NavigationStack {
+//            CounterDetail(counter: counter)
+//        }
+//    }
+//}
 
 
 // TODO: to separate file

@@ -6,31 +6,31 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct CounterRow: View {
-    
-    @Environment(\.managedObjectContext) private var viewContext
-    
-    @ObservedObject private var counter: Counter
-    @StateObject public var rT: RefreshTimer = RefreshTimer()
+    @Environment(\.modelContext) private var modelContext
 
+    @Bindable private var counter: Counter
+    @StateObject public var rT: RefreshTimer = RefreshTimer()
+    
     init(counter: Counter) {
         self.counter = counter
     }
     
     var body: some View {
         HStack {
-            Image(systemName: counter.wrappedIcon)
-                .foregroundColor(Color(counter.wrappedColor))
+            Image(systemName: counter.icon)
+                .foregroundColor(Color(counter.color))
                 .font(.system(size: 25))
                 
             VStack(alignment: HorizontalAlignment.leading) {
-                Text(counter.wrappedName)
+                Text(counter.name)
                     .font(Font.system(.title3, design: .default))
-                    .foregroundColor(Color(counter.wrappedColor))
+                    .foregroundColor(Color(counter.color))
                     .lineLimit(1)
                     
-                Text(counter.wrappedModifiedAt.localizedTimeDifference())
+                Text(counter.modifiedAt.localizedTimeDifference())
                     .font(Font.system(.caption, design: .default))
                     .foregroundColor(Color(UIColor.secondaryLabel))
             }
@@ -39,22 +39,30 @@ struct CounterRow: View {
             
             HStack {
                 Button("+") {
-                    CounterManager.shared.updateCounterValue(counter: counter, value: 1)
                 }
                 .font(.system(size: 44))
                 .onTapGesture {
                     UIImpactFeedbackGenerator(style: .soft).impactOccurred()
-                    CounterManager.shared.updateCounterValue(counter: counter, value: 1)
+                    counter.value += 1
+                    
+                    let newHistoryRecord = HistoryRecord(value: 1, totalValue: counter.value)
+                    counter.records.append(newHistoryRecord)
+                    
+                    try? modelContext.save()
                 }
-                
                 Button("-") {
-                    UIImpactFeedbackGenerator(style: .soft).impactOccurred()
-                    CounterManager.shared.updateCounterValue(counter: counter, value: -1)
                 }
                 .padding(.horizontal, 10)
                 .font(.system(size: 44))
                 .onTapGesture {
-                    CounterManager.shared.updateCounterValue(counter: counter, value: -1)
+                    UIImpactFeedbackGenerator(style: .soft).impactOccurred()
+                    counter.value -= 1
+                    
+                    let newHistoryRecord = HistoryRecord(value: -1, totalValue: counter.value)
+                    counter.records.append(newHistoryRecord)
+                    
+                    try? modelContext.save()
+
                 }
             }
             
@@ -66,7 +74,8 @@ struct CounterRow: View {
 
         .contextMenu {
             Button {
-                CounterManager.shared.toggleFavourite(counter: counter)
+                counter.isFavourite.toggle()
+                try? modelContext.save()
             } label: {
                 Label(counter.isFavourite ? "removeFavourite" : "markFavourite", systemImage: counter.isFavourite ? "heart.slash" : "heart")
             }
@@ -80,7 +89,9 @@ struct CounterRow: View {
             Divider()
             Button(role: .destructive) {
                 withAnimation {
-                    CounterManager.shared.deleteCounter(counter: counter)
+                    modelContext.delete(counter)
+                    try? modelContext.save()
+
                 }
             } label: {
                 Label("delete", systemImage: "trash")
@@ -90,17 +101,10 @@ struct CounterRow: View {
 }
 
 
-struct CounterListRowView_Previews: PreviewProvider {
-    static var previews: some View {
-        
-        let newCounter = Counter(context: PersistenceController.preview.container.viewContext)
-        
-        newCounter.name = "test"
-        newCounter.value = 2666
-        newCounter.modifiedAt = Date(timeIntervalSinceNow: -250)
-        
-        return List {
-            CounterRow(counter: newCounter).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-        }
-    }
-}
+//struct CounterListRowView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        return List {
+//            CounterRow(counter: newCounter)
+//        }
+//    }
+//}

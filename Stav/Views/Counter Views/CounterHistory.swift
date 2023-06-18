@@ -10,13 +10,12 @@ import SwiftUI
 
 // TODO: Merge with GameHistory to one view
 struct CounterHistory: View {
-    
     @Environment(\.dismiss) private var dismiss
     
-    private var historyRecords: [Record]
+    private var historyRecords: [HistoryRecord]
     private var counter: Counter
     
-    init (counter: Counter, historyRecords: [Record]) {
+    init (counter: Counter, historyRecords: [HistoryRecord]) {
         self.counter = counter
         self.historyRecords = historyRecords
     }
@@ -26,11 +25,11 @@ struct CounterHistory: View {
             List {
                 ForEach(historyRecords) { record in
                     HStack {
-                        Text(record.wrappedTimestamp.dateToFormattedDatetime())
+                        Text(record.timestamp.dateToFormattedDatetime())
                         Spacer()
                         Text(record.value > 0 ? "+\(record.value)" : "\(record.value)")
                         Divider()
-                        Text("\(record.result)")
+                        Text("\(record.totalValue)")
                             .fontWeight(.bold)
                     }
                 }
@@ -43,30 +42,15 @@ struct CounterHistory: View {
                     }
                 }
             }
-            .navigationTitle("history \(counter.wrappedName)")
+            .navigationTitle("history \(counter.name)")
             .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
 
 
-struct CounterHistoryView_Previews: PreviewProvider {
-    static var previews: some View {
-        let viewContext = PersistenceController.preview.container.viewContext
-        let newCounter = Counter(context: viewContext)
-        newCounter.id = UUID()
-        newCounter.name = "Test counter"
-        newCounter.value = 3
-        newCounter.createdAt = Date()
-        newCounter.modifiedAt = Date()
-        
-        let newHistoryRecord = Record(context: viewContext)
-        newHistoryRecord.id = UUID()
-        newHistoryRecord.timestamp = Date()
-        newHistoryRecord.value = 1
-        newHistoryRecord.counter = newCounter
-        newHistoryRecord.result = newCounter.value
-        
-        return CounterHistory(counter: newCounter, historyRecords: [newHistoryRecord])
-    }
-}
+//struct CounterHistoryView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        return CounterHistory(counter: newCounter, historyRecords: [newHistoryRecord])
+//    }
+//}

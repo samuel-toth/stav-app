@@ -6,14 +6,14 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct CounterAddEdit: View {
-    
-    @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
-    
+
     @State private var name: String = ""
-    @State private var value: Int?
+    @State private var value: Int = 0
     @State private var hasGoal: Bool = false
     @State private var hasReminder: Bool = false
     @State private var goalValue: Int?
@@ -21,11 +21,11 @@ struct CounterAddEdit: View {
     @State private var selectedColor: String = "AccentColor"
     @State private var selectedIcon: String = "number.circle.fill"
     
+    @Observable private var counter: Counter?
     
-    private var counter: Counter?
     private var isValid: Bool {
-        !name.isEmpty && (value == nil || (value != nil && value! <= Int16.max && value! >= Int16.min))
-        && ( !hasGoal || (hasGoal && (goalValue != nil && goalValue! > value ?? 0)))
+        !name.isEmpty && name.count > 3 && (value <= Int16.max && value >= Int16.min)
+        && ( !hasGoal || (hasGoal && (goalValue != nil && goalValue! > value )))
     }
     
     init(counterToEdit: Counter? = nil) {
@@ -45,16 +45,10 @@ struct CounterAddEdit: View {
                         Spacer()
                     }
                     TextField("name", text: $name)
-                        .addNameStyle()
-                        .onChange(of: name) { newValue in
-                            name = String(newValue.prefix(10))
-                        }
                     
-                    TextField("initialValue", value: $value, format: .number).keyboardType(.numberPad)
+                    TextField("initialValue", value: $value, format: .number)
+                        .keyboardType(.numberPad)
                         .multilineTextAlignment(.center)
-                        .onTapGesture {
-                            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to:nil, from:nil, for:nil)
-                        }
                 }
                 .listRowSeparator(.hidden)
                 
@@ -122,14 +116,14 @@ struct CounterAddEdit: View {
             .navigationBarTitleDisplayMode(.inline)
             .onAppear {
                 if let counter = counter {
-                    name = counter.wrappedName
-                    value = Int(counter.value)
+                    name = counter.name
+                    value = counter.value
                     hasGoal = counter.hasGoal
                     hasReminder = counter.hasGoal
-                    goalValue = Int(counter.goalValue)
-                    goalDate = counter.wrappedGoalDate
-                    selectedColor = counter.wrappedColor
-                    selectedIcon = counter.wrappedIcon
+                    goalValue = counter.goalValue
+                    goalDate = counter.goalDate ?? Date.now
+                    selectedColor = counter.color
+                    selectedIcon = counter.icon
                 }
             }
         }
@@ -139,20 +133,27 @@ struct CounterAddEdit: View {
         if isValid {
             withAnimation {
                 if (counter != nil) {
-                    CounterManager.shared.updateCounter(counter: counter!, name: name, hasGoal: hasGoal, color: selectedColor, icon: selectedIcon, goalValue: goalValue!, goalDate: goalDate)
+                    counter?.name = name
+                    counter?.hasGoal = hasGoal
+                    counter?.color = selectedColor
+                    counter?.icon = selectedIcon
+                    counter?.goalValue = goalValue!
+                    counter?.goalDate = goalDate
                 } else {
-                    CounterManager.shared.addCounter(name: name, value: value ?? 0, hasGoal: hasGoal, color: selectedColor, icon: selectedIcon, goalValue: goalValue, goalDate: goalDate)
+                    let counterToAdd = Counter(name: name, value: value, hasGoal: hasGoal, color: selectedColor, icon: selectedIcon)
+                    modelContext.insert(counterToAdd)
                 }
+                
+                try? modelContext.save()
                 dismiss()
             }
         }
     }
 }
 
-struct AddEditCounterf_Previews: PreviewProvider {
-    static var previews: some View {
-        let previewCounter = CounterManager().createTestData()
-        CounterAddEdit(counterToEdit: previewCounter).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-            .environment(\.locale, .init(identifier: "sk"))
-    }
+
+
+#Preview {
+    CounterAddEdit()
 }
+

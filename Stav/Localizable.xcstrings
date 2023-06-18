@@ -1,8 +1,85 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
+    "-" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "-"
+          }
+        }
+      }
+    },
+    "%@" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        }
+      }
+    },
+    "%d" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%d"
+          }
+        }
+      }
+    },
+    "%lld" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        }
+      }
+    },
+    "+" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+"
+          }
+        }
+      }
+    },
+    "+%d" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+%d"
+          }
+        }
+      }
+    },
+    "+%lld" : {
+
+    },
+    "0" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "0"
+          }
+        }
+      }
+    },
     "add" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -19,7 +96,6 @@
       }
     },
     "addCounter" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -36,7 +112,6 @@
       }
     },
     "addGame" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -53,7 +128,6 @@
       }
     },
     "addPlayer" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -70,7 +144,6 @@
       }
     },
     "allRecords" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -87,7 +160,7 @@
       }
     },
     "average" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -104,7 +177,6 @@
       }
     },
     "cancel" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -121,8 +193,6 @@
       }
     },
     "counters" : {
-      "comment" : "Localizable.strings\n  Stav\n\n  Created by Samuel Tóth on 16/11/2022.",
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -139,7 +209,7 @@
       }
     },
     "createdAt" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -156,7 +226,6 @@
       }
     },
     "customize" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -173,7 +242,7 @@
       }
     },
     "daily" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -190,7 +259,7 @@
       }
     },
     "date" : {
-      "extractionState" : "migrated",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -207,7 +276,6 @@
       }
     },
     "dates" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -224,7 +292,6 @@
       }
     },
     "day" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -241,7 +308,6 @@
       }
     },
     "dayAgo" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -258,7 +324,6 @@
       }
     },
     "dayRemaining" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -275,7 +340,6 @@
       }
     },
     "days" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -292,7 +356,6 @@
       }
     },
     "delete" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -309,7 +372,6 @@
       }
     },
     "deleteCounter %@" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -326,7 +388,6 @@
       }
     },
     "deleteGame %@" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -343,7 +404,6 @@
       }
     },
     "draw" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -360,7 +420,6 @@
       }
     },
     "edit" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -377,7 +436,6 @@
       }
     },
     "expired" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -394,7 +452,6 @@
       }
     },
     "exportCounters" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -411,7 +468,6 @@
       }
     },
     "exportGames" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -428,7 +484,6 @@
       }
     },
     "exportHistory" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -445,7 +500,6 @@
       }
     },
     "games" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -462,7 +516,6 @@
       }
     },
     "goal" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -479,7 +532,6 @@
       }
     },
     "goalDate" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -496,7 +548,6 @@
       }
     },
     "goalReached" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -513,7 +564,6 @@
       }
     },
     "goalValue" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -529,8 +579,10 @@
         }
       }
     },
+    "Hah" : {
+
+    },
     "havePassed" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -546,8 +598,10 @@
         }
       }
     },
+    "Hehe" : {
+
+    },
     "history" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -564,7 +618,6 @@
       }
     },
     "history %@" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -581,7 +634,6 @@
       }
     },
     "hour" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -598,7 +650,6 @@
       }
     },
     "hourAgo" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -615,7 +666,6 @@
       }
     },
     "hourRemaining" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -632,7 +682,6 @@
       }
     },
     "hours" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -648,19 +697,8 @@
         }
       }
     },
-    "hours " : {
-      "extractionState" : "migrated",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "hours "
-          }
-        }
-      }
-    },
     "hours %lld" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -672,18 +710,45 @@
               "formatSpecifier" : "lld",
               "variations" : {
                 "plural" : {
-                  "few" : {
+                  "many" : {
                     "stringUnit" : {
                       "state" : "translated",
-                      "value" : ""
+                      "value" : "hours"
                     }
                   },
-                  "four" : {
+                  "one" : {
                     "stringUnit" : {
                       "state" : "translated",
-                      "value" : "hodiny"
+                      "value" : "hour"
                     }
                   },
+                  "other" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "hours"
+                    }
+                  },
+                  "zero" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "hours"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "@hodín"
+          },
+          "substitutions" : {
+            "hours" : {
+              "formatSpecifier" : "lld",
+              "variations" : {
+                "plural" : {
                   "many" : {
                     "stringUnit" : {
                       "state" : "translated",
@@ -699,19 +764,7 @@
                   "other" : {
                     "stringUnit" : {
                       "state" : "translated",
-                      "value" : ""
-                    }
-                  },
-                  "three" : {
-                    "stringUnit" : {
-                      "state" : "translated",
-                      "value" : "hodiny"
-                    }
-                  },
-                  "two" : {
-                    "stringUnit" : {
-                      "state" : "translated",
-                      "value" : "hodiny"
+                      "value" : "hodín"
                     }
                   },
                   "zero" : {
@@ -728,7 +781,6 @@
       }
     },
     "importCounters" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -745,7 +797,6 @@
       }
     },
     "importGames" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -762,7 +813,6 @@
       }
     },
     "initialValue" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -779,7 +829,7 @@
       }
     },
     "interval" : {
-      "extractionState" : "migrated",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -796,7 +846,6 @@
       }
     },
     "justNow" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -813,7 +862,7 @@
       }
     },
     "lastChange" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -830,7 +879,6 @@
       }
     },
     "lessThanMin" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -847,7 +895,6 @@
       }
     },
     "markFavourite" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -864,7 +911,7 @@
       }
     },
     "maximum" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -881,7 +928,6 @@
       }
     },
     "minAgo" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -898,7 +944,7 @@
       }
     },
     "minimum" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -915,7 +961,6 @@
       }
     },
     "minRemaining" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -932,7 +977,6 @@
       }
     },
     "minute" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -949,7 +993,6 @@
       }
     },
     "minutes" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -966,7 +1009,6 @@
       }
     },
     "modified" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -983,7 +1025,7 @@
       }
     },
     "monthly" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1000,7 +1042,6 @@
       }
     },
     "more" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1017,7 +1058,6 @@
       }
     },
     "name" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1034,7 +1074,6 @@
       }
     },
     "newName" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1051,7 +1090,6 @@
       }
     },
     "noPlayers" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1068,7 +1106,6 @@
       }
     },
     "noRecords" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1085,7 +1122,6 @@
       }
     },
     "onDay" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1102,7 +1138,7 @@
       }
     },
     "player" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1119,7 +1155,6 @@
       }
     },
     "playerName" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1136,7 +1171,7 @@
       }
     },
     "players" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1153,7 +1188,6 @@
       }
     },
     "remaining" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1170,7 +1204,6 @@
       }
     },
     "reminder" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1187,7 +1220,6 @@
       }
     },
     "removeFavourite" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1204,7 +1236,6 @@
       }
     },
     "rename" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1221,7 +1252,6 @@
       }
     },
     "renamePlayer %@" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1238,7 +1268,6 @@
       }
     },
     "reset" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1255,7 +1284,6 @@
       }
     },
     "resetCounter %@" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1272,7 +1300,6 @@
       }
     },
     "resetGame %@" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1289,7 +1316,6 @@
       }
     },
     "resetPlayer %@" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1306,7 +1332,6 @@
       }
     },
     "return" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1323,7 +1348,6 @@
       }
     },
     "save" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1340,7 +1364,6 @@
       }
     },
     "selectColor" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1357,7 +1380,6 @@
       }
     },
     "selectIcon" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1374,7 +1396,6 @@
       }
     },
     "settings" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1391,7 +1412,6 @@
       }
     },
     "setupGoal" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1408,7 +1428,6 @@
       }
     },
     "setupReminder" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1425,7 +1444,6 @@
       }
     },
     "showAllCounters" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1442,7 +1460,6 @@
       }
     },
     "showAllGames" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1459,7 +1476,6 @@
       }
     },
     "showFavourites" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1476,7 +1492,6 @@
       }
     },
     "showHistory" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1493,7 +1508,6 @@
       }
     },
     "sortBy" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1510,7 +1524,7 @@
       }
     },
     "statistics" : {
-      "extractionState" : "migrated",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1527,7 +1541,6 @@
       }
     },
     "value" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1544,7 +1557,6 @@
       }
     },
     "weekAgo" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1561,7 +1573,7 @@
       }
     },
     "weekly" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1578,7 +1590,7 @@
       }
     },
     "yearly" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1595,7 +1607,6 @@
       }
     },
     "youSure" : {
-      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {

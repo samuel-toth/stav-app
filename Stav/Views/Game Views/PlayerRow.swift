@@ -6,12 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct PlayerRow: View {
-    
-    @Environment(\.managedObjectContext) private var viewContext
-    
-    @ObservedObject private var player: Player
+    @Environment(\.modelContext) private var modelContext
+
+    @Bindable private var player: Player
     
     @State private var showPlayerHistory = false
     @State private var showRenamePlayer = false
@@ -24,12 +24,12 @@ struct PlayerRow: View {
     var body: some View {
         HStack {
             Image(systemName: "person.fill")
-                .foregroundColor(Color(player.game?.color ?? "AccentColor"))
+                .foregroundColor(Color(player.game!.color))
             VStack(alignment: .leading) {
-                Text(player.name ?? "")
+                Text(player.name )
                     .font(Font.system(.title3, design: .default))
                     .lineLimit(1)
-                Text(player.modifiedAt?.localizedTimeDifference() ?? Date().localizedTimeDifference())
+                Text(player.modifiedAt.localizedTimeDifference() )
                     .font(Font.system(.caption, design: .default))
                     .foregroundColor(Color(UIColor.secondaryLabel))
             }
@@ -60,12 +60,13 @@ struct PlayerRow: View {
                     .valueDisplayStyle()
             }
         }
-        .alert("renamePlayer \(player.wrappedName)", isPresented: $showRenamePlayer, actions: {
+        .alert("renamePlayer \(player.name)", isPresented: $showRenamePlayer, actions: {
             TextField("newName", text: $playerNewName)
             
             Button("rename", action: {
                 withAnimation {
-                    GameManager.shared.renamePlayer(player: player, name: playerNewName)
+                    player.name = playerNewName
+                    try? modelContext.save()
                     playerNewName = ""
                 }
             })
@@ -74,14 +75,14 @@ struct PlayerRow: View {
         .frame(height: 70)
         .background(Color(UIColor.secondarySystemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
-        .sheet(isPresented: $showPlayerHistory) {
-            PlayerHistory(gameRecords: player.records?.toArray() ?? [], playerName: player.wrappedName)
-        }
+//        .sheet(isPresented: $showPlayerHistory) {
+//            PlayerHistory(gameRecords: player.records?.toArray() ?? [], playerName: player.wrappedName)
+//        }
         .contextMenu {
             Button {
                 showRenamePlayer.toggle()
             } label: {
-                Label("renamePlayer \(player.wrappedName)", systemImage: "person.text.rectangle")
+                Label("renamePlayer \(player.name)", systemImage: "person.text.rectangle")
             }
             
             Button {
@@ -91,29 +92,21 @@ struct PlayerRow: View {
             }
             
             Button {
-                GameManager.shared.resetPlayer(player: player)
             } label: {
-                Label("resetPlayer \(player.wrappedName)", systemImage: "arrow.counterclockwise.circle")
+                Label("resetPlayer \(player.name)", systemImage: "arrow.counterclockwise.circle")
             }
         }
     }
     
     func updateValue(value: Int) {
         UIImpactFeedbackGenerator(style: .soft).impactOccurred()
-        GameManager.shared.updatePlayerScore(player: player, score: value)
     }
 }
 
 
-struct GameDetailPlayerView_Previews: PreviewProvider {
-    static var previews: some View {
-        let previewPlayer = Player(context: PersistenceController.preview.container.viewContext)
-        previewPlayer.name = "Jožko Golonka"
-        previewPlayer.score = 1000
-        previewPlayer.id = UUID()
-        
-        
-        return PlayerRow(player: previewPlayer)
-        
-    }
-}
+//struct GameDetailPlayerView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        return PlayerRow(player: previewPlayer)
+//        
+//    }
+//}

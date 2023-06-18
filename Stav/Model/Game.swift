@@ -9,14 +9,14 @@ import Foundation
 import SwiftData
 
 @Model
-class SDGame {
+class Game {
     var id: UUID
     var name: String
     var color: String
     var createdAt: Date
     var icon: String
     var isFavourite: Bool
-    @Relationship(.cascade, inverse: \SDPlayer.game) var players: [SDPlayer] = []
+    @Relationship(.cascade, inverse: \Player.game) var players: [Player] = []
     
     init(name: String, color: String, icon: String) {
         self.id = UUID()

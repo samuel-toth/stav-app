@@ -7,12 +7,11 @@
 
 import SwiftUI
 import CoreData
+import SwiftData
 
 struct ContentView: View {
-    
-    @Environment(\.managedObjectContext) private var viewContext
-    
-    
+    @Environment(\.modelContext) private var modelContext
+
     init() {
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color.accentColor)]
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor(Color.accentColor)]
@@ -20,18 +19,15 @@ struct ContentView: View {
     var body: some View {
         TabView {
             CounterList()
-                .environment(\.managedObjectContext, viewContext)
                 .tabItem {
                     Label("counters", systemImage: "number")
                         .fontWeight(.heavy)
                 }
             DateList()
-                .environment(\.managedObjectContext, viewContext)
                     .tabItem {
                         Label("dates", systemImage: "calendar")
                     }
             GameList()
-                .environment(\.managedObjectContext, viewContext)
                 .tabItem {
                     Label("games", systemImage: "person.3.fill")
                 }
@@ -42,8 +38,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-            .environment(\.locale, .init(identifier: "sk"))
-
+        ContentView()
     }
 }

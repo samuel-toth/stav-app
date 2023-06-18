@@ -6,10 +6,10 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct DateAddEdit: View {
-    
-    @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     
     @State private var name: String = ""
@@ -17,18 +17,16 @@ struct DateAddEdit: View {
     @State private var selectedIcon: String = "calendar.circle.fill"
     @State private var timestamp = Date()
     
-    
-    
-    var date: Datum?
+    @Observable var datum: Datum?
     
     private var isValid: Bool {
         !name.isEmpty && name.count < 16
     }
     
     init(dateToEdit: Datum? = nil ) {
-        self.date = dateToEdit
-        if let date = date {
-            self.name = date.name ?? ""
+        self.datum = dateToEdit
+        if let date = datum {
+            self.name = date.name 
             self.selectedColor = date.color ?? ""
             self.selectedIcon = date.icon ?? ""
         }
@@ -49,7 +47,7 @@ struct DateAddEdit: View {
                     }
                     TextField("name", text: $name)
                         .addNameStyle()
-                        .onChange(of: name) { newValue in
+                        .onChange(of: name) { oldValue, newValue in
                             name = String(newValue.prefix(10))
                         }
                     DatePicker(
@@ -92,11 +90,11 @@ struct DateAddEdit: View {
             .navigationTitle("addGame")
             .navigationBarTitleDisplayMode(.inline)
             .onAppear {
-                if let date = date {
-                    name = date.name ?? ""
+                if let date = datum {
+                    name = date.name 
                     selectedColor = date.color ?? "AccentColor"
                     selectedIcon = date.icon ?? "calendar.circle"
-                    timestamp = date.timestamp ?? Date()
+                    timestamp = date.timestamp 
                 }
             }
         }
@@ -105,12 +103,17 @@ struct DateAddEdit: View {
     private func addOrUpdateDate() {
         if isValid {
             withAnimation {
-                if (date != nil) {
-                    DatumManager.shared.updateDatum(datum: date!, name: name, icon: selectedIcon, color: selectedColor, timestamp: timestamp)
+                if (datum != nil) {
+                    datum?.name = name
+                    datum?.color = selectedColor
+                    datum?.icon = selectedIcon
+                  
+                    try? modelContext.save()
                 } else {
-                    DatumManager.shared.addDatum(name: name, icon: selectedIcon, color: selectedColor, timestamp: timestamp)
+                    let datumToAdd = Datum(name: name, isRepeating: false, repeatCycle: "", timestamp: timestamp)
+                    modelContext.insert(datumToAdd)
+                    try? modelContext.save()
                 }
-                
                 dismiss()
             }
         }

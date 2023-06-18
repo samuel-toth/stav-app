@@ -9,15 +9,15 @@ import Foundation
 import SwiftData
 
 @Model
-class SDPlayer {
+class Player {
     var id: UUID
     var createdAt: Date
     var modifiedAt: Date
     var name: String
     var score: Int
-    @Relationship(.cascade) var records: [SDHistoryRecord] = []
+    @Relationship(.cascade) var records: [HistoryRecord] = []
     
-    var game: SDGame?
+    var game: Game?
     
     init(name: String, score: Int) {
         self.id = UUID()

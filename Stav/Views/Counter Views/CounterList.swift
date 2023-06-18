@@ -7,13 +7,11 @@
 
 import SwiftUI
 import CoreData
+import SwiftData
 
 struct CounterList: View {
-    
-    @Environment(\.managedObjectContext) private var viewContext
-    
-    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Counter.name, ascending: true)])
-    private var counters: FetchedResults<Counter>
+    @Environment(\.modelContext) private var modelContext
+    @Query(sort: \.name) var allCounters: [Counter]
     
     @State private var isSheetPresented: Bool = false
     @State private var showFavourite: Bool = false
@@ -24,19 +22,16 @@ struct CounterList: View {
     @State private var sortValueAscending: Bool = true
     @State private var sortModifiedAscending: Bool = true
     
-    
     var body: some View {
-        
         NavigationStack {
-            if counters.isEmpty {
+            if allCounters.isEmpty {
                 Image("AppIconNoBg")
                     .resizable()
                     .scaledToFit()
                     .opacity(0.1)
             }
             List {
-                
-                ForEach(counters) { counter in
+                ForEach(allCounters) { counter in
                     NavigationLink(value: counter) {
                         CounterRow(counter: counter)
                             .frame(height: 50)
@@ -48,7 +43,6 @@ struct CounterList: View {
             }
             .navigationDestination(for: Counter.self, destination: { counter in
                 CounterDetail(counter: counter)
-                    .environment(\.managedObjectContext, viewContext)
             })
 
             .toolbar {
@@ -63,7 +57,7 @@ struct CounterList: View {
                     Menu {
                         Button(action: {
                             showFavourite.toggle()
-                            counters.nsPredicate = showFavourite ?  NSPredicate(format: "isFavourite == %@", NSNumber(value: showFavourite)) : NSPredicate(format: "isFavourite == YES OR isFavourite == NO")
+                            // TODO: Show favourite counters
                         }) {
                             Label(showFavourite ? "showAllCounters" : "showFavourites", systemImage: showFavourite ? "heart.slash" : "heart")
                         }
@@ -111,33 +105,26 @@ struct CounterList: View {
                 CounterAddEdit()
             }
             .navigationTitle("counters")
-            
         }
-        
     }
     
+    // TODO: counter sorting
     private func sortCounters() {
         switch selectedSort {
         case .name:
             sortNameAscending.toggle()
-            counters.nsSortDescriptors = [NSSortDescriptor(keyPath: \Counter.name, ascending: sortNameAscending)]
         case .value:
             sortValueAscending.toggle()
-            counters.nsSortDescriptors = [NSSortDescriptor(keyPath: \Counter.value, ascending: sortValueAscending)]
         case .modified:
             sortModifiedAscending.toggle()
-            counters.nsSortDescriptors = [NSSortDescriptor(keyPath: \Counter.modifiedAt, ascending: sortModifiedAscending)]
         }
     }
     
     private func deleteCounter(offsets: IndexSet) {
         withAnimation {
-            offsets.map { counters[$0] }.forEach(viewContext.delete)
-            do {
-                try viewContext.save()
-            } catch {
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            for index in offsets {
+                modelContext.delete(allCounters[index])
+                try? modelContext.save()
             }
         }
     }
@@ -146,6 +133,6 @@ struct CounterList: View {
 
 struct CounterListView_Previews: PreviewProvider {
     static var previews: some View {
-        CounterList().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        CounterList()
     }
 }

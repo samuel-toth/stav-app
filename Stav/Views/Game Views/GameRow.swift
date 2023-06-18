@@ -8,11 +8,9 @@
 import SwiftUI
 
 struct GameRow: View {
+    @Environment(\.modelContext) private var modelContext
     
-    @Environment(\.managedObjectContext) private var viewContext
-    
-    @ObservedObject private var game: Game
-    
+    @Bindable private var game: Game
     
     init(game: Game) {
         self.game = game
@@ -20,17 +18,17 @@ struct GameRow: View {
     
     var body: some View {
         HStack {
-            Image(systemName: game.wrappedIcon)
-                .foregroundColor(Color(game.wrappedColor))
+            Image(systemName: game.icon)
+                .foregroundColor(Color(game.color))
                 .font(.system(size: 25))
             VStack (alignment: HorizontalAlignment.leading) {
-                Text(game.name ?? "")
+                Text(game.name)
                     .font(Font.system(.title3, design: .default))
-                    .foregroundColor(Color(game.wrappedColor))
+                    .foregroundColor(Color(game.color))
                     .lineLimit(1)
                 
                 HStack {
-                    Text(GameManager.shared.getLocalizedGameResult(id: game.id ?? UUID()))
+                    Text("Hah")
                         .font(Font.system(.caption, design: .default))
                         .foregroundColor(Color(UIColor.secondaryLabel))
                 }
@@ -39,7 +37,7 @@ struct GameRow: View {
             Spacer()
             
             HStack {
-                Text("\(GameManager.shared.getGamePlayersCount(id: game.id ?? UUID()))")
+                Text("Hehe")
                     .valueDisplayStyle()
                 Image(systemName: "person.2.fill")
                     .font(.title2)
@@ -49,22 +47,20 @@ struct GameRow: View {
         }
         .contextMenu {
             Button {
-                GameManager.shared.toggleFavourite(game: game)
+                game.isFavourite.toggle()
+                try? modelContext.save()
             } label: {
-                Label(game.isFavourite ? "removeFavourite".localized() : "markFavourite".localized(), systemImage: game.isFavourite ? "heart.slash" : "heart")
+                Label(game.isFavourite ? "removeFavourite" : "markFavourite", systemImage: game.isFavourite ? "heart.slash" : "heart")
             }
         }
     }
 }
 
 
-struct GameListRowView_Previews: PreviewProvider {
-    static var previews: some View {
-        let previewGame = Game(context: PersistenceController.preview.container.viewContext)
-        previewGame.name = "test"
-        
-        return List {
-            GameRow(game: previewGame).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-        }
-    }
-}
+//struct GameListRowView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        return List {
+//            GameRow(game: previewGame)
+//        }
+//    }
+//}

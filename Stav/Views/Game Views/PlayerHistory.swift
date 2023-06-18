@@ -11,13 +11,13 @@ struct PlayerHistory: View {
     
     @Environment(\.dismiss) private var dismiss
     
-    private var gameRecords: [Record]
+    private var gameRecords: [HistoryRecord]
     private var playerName: String
     
-    init(gameRecords: [Record], playerName: String) {
+    init(gameRecords: [HistoryRecord], playerName: String) {
         self.gameRecords = gameRecords
         self.playerName = playerName
-        self.gameRecords.sort { $0.timestamp ?? Date() > $1.timestamp ?? Date() }
+        self.gameRecords.sort { $0.timestamp > $1.timestamp }
     }
     
     var body: some View {
@@ -25,14 +25,14 @@ struct PlayerHistory: View {
             List {
                 ForEach(gameRecords) { record in
                     HStack {
-                        Text("\(record.result)")
+                        Text("\(record.totalValue)")
                             .fontWeight(.bold)
                             .frame(width: 50)
                         Divider()
                         Text(record.value > 0 ? "+\(record.value)" : "\(record.value)")
                         Spacer()
                         Divider()
-                        Text(record.timestamp?.dateToFormattedDatetime() ?? "")
+                        Text(record.timestamp.dateToFormattedDatetime() )
                     }
                 }
             }
@@ -51,20 +51,8 @@ struct PlayerHistory: View {
 }
 
 
-struct PlayerHistory_Previews: PreviewProvider {
-    static var previews: some View {
-        let previewPlayer = Player(context: PersistenceController.preview.container.viewContext)
-        previewPlayer.name = "Jožko Golonka"
-        previewPlayer.score = 20
-        previewPlayer.id = UUID()
-        
-        let newRecord = Record(context: PersistenceController.preview.container.viewContext)
-        newRecord.id = UUID()
-        newRecord.timestamp = Date()
-        newRecord.value = 1
-        newRecord.result = 20
-        newRecord.player = previewPlayer
-        
-        return PlayerHistory(gameRecords: [newRecord], playerName: previewPlayer.name ?? "")
-    }
-}
+//struct PlayerHistory_Previews: PreviewProvider {
+//    static var previews: some View {
+//        return PlayerHistory(gameRecords: [newRecord], playerName: previewPlayer.name ?? "")
+//    }
+//}

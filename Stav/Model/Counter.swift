@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-class SDCounter {
+class Counter {
 
     var id: UUID
     @Attribute(.unique) var name: String
@@ -22,7 +22,7 @@ class SDCounter {
     var icon: String
     var createdAt: Date
     var modifiedAt: Date
-    @Relationship(.cascade) var records: [SDHistoryRecord] = []
+    @Relationship(.cascade) var records: [HistoryRecord] = []
     
     init(name: String, value: Int, hasGoal: Bool, goalDate: Date? = nil, goalValue: Int? = nil, color: String, icon: String) {
         self.id = UUID()

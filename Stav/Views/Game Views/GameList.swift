@@ -6,29 +6,25 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct GameList: View {
-    
-    @Environment(\.managedObjectContext) private var viewContext
-    
-    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Game.name, ascending: true)])
-    private var games: FetchedResults<Game>
-    
+    @Environment(\.modelContext) private var modelContext
+    @Query(sort: \.name) var allGames: [Game]
+        
     @State private var isSheetPresented: Bool = false
     @State private var showFavourite: Bool = false
     
-    
-    
     var body: some View {
         NavigationStack {
-            if games.isEmpty {
+            if allGames.isEmpty {
                 Image("AppIconNoBg")
                     .resizable()
                     .scaledToFit()
                     .opacity(0.1)
             }
             List {
-                ForEach(games) { game in
+                ForEach(allGames) { game in
                     NavigationLink(value: game) {
                         GameRow(game: game)
                             .frame(height: 50)
@@ -39,7 +35,6 @@ struct GameList: View {
             }
             .navigationDestination(for: Game.self, destination: { game in
                 GameDetail(game: game)
-                    .environment(\.managedObjectContext, viewContext)
             })
             .toolbar {
                 ToolbarItem {
@@ -54,11 +49,12 @@ struct GameList: View {
                         Section {
                             Button(action: {
                                 showFavourite.toggle()
-                                games.nsPredicate = showFavourite ?  NSPredicate(format: "isFavourite == %@", NSNumber(value: showFavourite)) : NSPredicate(format: "isFavourite == YES OR isFavourite == NO")
+                                // TODO: Show favourite games
                             }) {
                                 Label(showFavourite ? "showAllGames" : "showFavourites", systemImage: showFavourite ? "heart.slash" : "heart")
                             }
                         }
+                        
                         // TODO: Implement import export
                         Section(header: Text("settings")) {
                             Button(action: {}) {
@@ -75,26 +71,19 @@ struct GameList: View {
                 GameAddEdit()
             })
             .navigationTitle("games")
-            
         }
-        
     }
     
     private func deleteGame(offsets: IndexSet) {
         withAnimation {
-            offsets.map { games[$0] }.forEach(viewContext.delete)
-            do {
-                try viewContext.save()
-            } catch {
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            for index in offsets {
+                modelContext.delete(allGames[index])
+                try? modelContext.save()
             }
         }
     }
 }
 
-struct GamesListView_Previews: PreviewProvider {
-    static var previews: some View {
-        GameList().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-    }
+#Preview {
+    GameList()
 }

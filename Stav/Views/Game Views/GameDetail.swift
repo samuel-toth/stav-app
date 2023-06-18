@@ -6,14 +6,13 @@
 //
 
 import SwiftUI
-import CoreData
+import SwiftData
 
 struct GameDetail: View {
-    
-    @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.modelContext) private var modelContext
     @Environment(\.presentationMode) var presentationMode
     
-    @ObservedObject var game: Game
+    @Observable var game: Game
     
     @State private var showDeleteAlert = false
     @State private var showResetAlert = false
@@ -23,79 +22,63 @@ struct GameDetail: View {
     @State private var showHistorySheet = false
     @State private var showEditSheet = false
     
-    private var gameHistory: [Record]
-    private var gamePlayers: [Player]
-    
-    init(game: Game) {
-        self.game = game
-        
-        let playerRequest: NSFetchRequest<Player> = Player.fetchRequest()
-        playerRequest.predicate = NSPredicate(format: "game == %@", game)
-        playerRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Player.name, ascending: true)]
-        gamePlayers = try! PersistenceController.shared.container.viewContext.fetch(playerRequest)
-        
-        let request: NSFetchRequest<Record> = Record.fetchRequest()
-        request.predicate = NSPredicate(format: "game == %@", game)
-        request.sortDescriptors = [NSSortDescriptor(keyPath: \Record.timestamp, ascending: false)]
-        gameHistory = try! PersistenceController.shared.container.viewContext.fetch(request)
-    }
-    
     var body: some View {
         ScrollView {
-            ForEach(gamePlayers) { player in
+            ForEach(game.players) { player in
                 PlayerRow(player: player)
             }
             .padding(.horizontal, 15)
             
             Divider()
                 .padding(.vertical, 20)
-            DisclosureGroup("history", isExpanded: $isHistoryExpanded.animation()) {
-                VStack {
-                    if gameHistory.count == 0 {
-                        Text("noRecords")
-                    }
-                    ForEach(gameHistory.prefix(5)) { record in
-                        HStack {
-                            Text("\(record.result)")
-                                .fontWeight(.bold)
-                                .frame(width: 50)
-                                .multilineTextAlignment(.leading)
-                            Divider()
-                            Text(record.value > 0 ? "+\(record.value)" : "\(record.value)")
-                            Spacer()
-                            Text(record.player?.name ?? "")
-                                .multilineTextAlignment(.trailing)
-                            Divider()
-                            Text(record.wrappedTimestamp.dateToFormattedDatetime())
-                        }
-                    }
+//            DisclosureGroup("history", isExpanded: $isHistoryExpanded.animation()) {
+//                VStack {
+//                    // TODO: now records for players in game detail
+////                    if game.players. {
+////                        Text("noRecords")
+////                    }
+//                    ForEach(gameHistory.prefix(5)) { record in
+//                        HStack {
+//                            Text("\(record.result)")
+//                                .fontWeight(.bold)
+//                                .frame(width: 50)
+//                                .multilineTextAlignment(.leading)
+//                            Divider()
+//                            Text(record.value > 0 ? "+\(record.value)" : "\(record.value)")
+//                            Spacer()
+//                            Text(record.player?.name ?? "")
+//                                .multilineTextAlignment(.trailing)
+//                            Divider()
+//                            Text(record.wrappedTimestamp.dateToFormattedDatetime())
+//                        }
+//                    }
                     
-                    if gameHistory.count > 5 {
-                        Button(action: {
-                            showHistorySheet.toggle()
-                        }) {
-                            Text("allRecords")
-                                .foregroundColor(Color.blue)
-                        }
-                    }
-                }
-                .padding(.top, 10)
-            }
-            .padding(.horizontal, 20)
+//                    if gameHistory.count > 5 {
+//                        Button(action: {
+//                            showHistorySheet.toggle()
+//                        }) {
+//                            Text("allRecords")
+//                                .foregroundColor(Color.blue)
+//                        }
+//                    }
+//                }
+//                .padding(.top, 10)
+//            }
+//            .padding(.horizontal, 20)
             
             HStack {
                 Text("")
                     .alert(isPresented: $showResetAlert) {
                         Alert(
                             title: Text("youSure"),
-                            message: Text("resetGame \(game.wrappedName)"),
+                            message: Text("resetGame \(game.name)"),
                             primaryButton: .cancel(
                                 Text("cancel")
                             ),
                             secondaryButton: .destructive(
                                 Text("reset"),
                                 action: {
-                                    GameManager.shared.resetGame(game: game)
+                                    //GameManager.shared.resetGame(game: game)
                                 }
                             )
                         )
@@ -104,14 +87,14 @@ struct GameDetail: View {
                     .alert(isPresented: $showDeleteAlert) {
                         Alert(
                             title: Text("youSure"),
-                            message: Text("deleteGame \(game.wrappedName)"),
+                            message: Text("deleteGame \(game.name)"),
                             primaryButton: .cancel(
                                 Text("cancel")
                             ),
                             secondaryButton: .destructive(
                                 Text("delete"),
                                 action: {
-                                    viewContext.delete(game)
+                                    modelContext.delete(game)
                                     presentationMode.wrappedValue.dismiss()
                                 }
                             )
@@ -122,7 +105,7 @@ struct GameDetail: View {
                         TextField("playerName", text: $playerToAdd)
                         
                         Button("add".localized(), action: {
-                            GameManager.shared.addPlayerToGame(game: game, playerName: playerToAdd)
+                            //GameManager.shared.addPlayerToGame(game: game, playerName: playerToAdd)
                             playerToAdd = ""
                         })
                         Button("cancel", role: .cancel, action: {})})
@@ -130,25 +113,26 @@ struct GameDetail: View {
             .sheet(isPresented: $showEditSheet) {
                 GameAddEdit(gameToEdit: game)
             }
-            .sheet(isPresented: $showHistorySheet) {
-                GameHistory(gameName: game.wrappedName, gameRecords: gameHistory)
-            }
+//            TODO: game history sheet
+//            .sheet(isPresented: $showHistorySheet) {
+//                GameHistory(gameName: game.wrappedName, gameRecords: gameHistory)
+//            }
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     HStack {
-                        Image(systemName: game.icon ?? "")
+                        Image(systemName: game.icon )
                             .font(.system(size: 25))
-                            .foregroundColor(Color(game.wrappedColor))
-                        Text("\(game.name ?? "")")
+                            .foregroundColor(Color(game.color))
+                        Text(game.name)
                             .font(.system(size: 25))
                             .fontWeight(Font.Weight.semibold)
-                            .foregroundColor(Color(game.wrappedColor))
+                            .foregroundColor(Color(game.color))
                     }
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        GameManager.shared.toggleFavourite(game: game)
+                        // GameManager.shared.toggleFavourite(game: game)
                     }) {
                         Image(systemName: game.isFavourite ? "heart.fill" : "heart")
                     }
@@ -190,25 +174,10 @@ struct GameDetail: View {
 }
 
 
-struct GameDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        
-        let previewPlayer = Player(context: PersistenceController.shared.container.viewContext)
-        previewPlayer.id = UUID()
-        previewPlayer.name = "Bohumil"
-        previewPlayer.score = 10
-        previewPlayer.createdAt = Date()
-        previewPlayer.modifiedAt = Date()
-        
-        let previewGame = Game(context: PersistenceController.shared.container.viewContext)
-        previewGame.id = UUID()
-        previewGame.name = "NHL"
-        previewGame.color = "picker_orange"
-        previewGame.icon = "heart.circle.fill"
-        previewGame.createdAt = Date()
-        
-        return NavigationStack {
-            GameDetail(game: previewGame).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-        }
-    }
-}
+//struct GameDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        return NavigationStack {
+//            GameDetail(game: previewGame)
+//        }
+//    }
+//}

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct PlayerTemplate: Identifiable {
     var id: UUID = UUID()
@@ -13,7 +14,7 @@ struct PlayerTemplate: Identifiable {
 }
 
 struct GameAddEdit: View {
-    @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     
     @State private var name: String = ""
@@ -22,8 +23,8 @@ struct GameAddEdit: View {
     @State private var playerTemplates: [PlayerTemplate] = []
     
     private var players: [Player]?
-    var game: Game?
-
+    @Observable var game: Game?
+    
     private var isValid: Bool {
         !name.isEmpty && name.count < 16 && !playerTemplates.isEmpty && playerTemplates.count < 9
         && playerTemplates.filter({ $0.name.isEmpty }).isEmpty
@@ -32,10 +33,10 @@ struct GameAddEdit: View {
     init(gameToEdit: Game? = nil ) {
         self.game = gameToEdit
         if let game = game {
-            self.name = game.wrappedName
-            self.selectedColor = game.wrappedColor
-            self.selectedIcon = game.wrappedIcon
-            self.players = game.players?.toArray()
+            self.name = game.name
+            self.selectedColor = game.color
+            self.selectedIcon = game.icon
+            self.players = game.players
             
         }
     }
@@ -47,95 +48,92 @@ struct GameAddEdit: View {
                     HStack {
                         Spacer()
                         Image(systemName: selectedIcon)
-                                .resizable()
-                                .foregroundColor(Color(selectedColor))
-                                .frame(width: 100, height: 100, alignment: .center)
+                            .resizable()
+                            .foregroundColor(Color(selectedColor))
+                            .frame(width: 100, height: 100, alignment: .center)
                         Spacer()
                     }
-                    TextField("name".localized(), text: $name)
-                            .addNameStyle()
-                            .onChange(of: name) { newValue in
-                                name = String(newValue.prefix(10))
-                            }
-
+                    TextField("name", text: $name)
+                    .addNameStyle()
+                    .onChange(of: name) { oldValue, newValue in
+                        name = String(newValue.prefix(10))
+                    }
                 }
-                        .listRowSeparator(.hidden)
-
+                .listRowSeparator(.hidden)
+                
                 Section {
                     List {
-
                         if (game != nil) {
                             ForEach(players!, id: \.id) { player in
                                 HStack {
                                     Image (systemName: "person.fill")
-                                            .foregroundColor(.accentColor)
-                                    Text(player.wrappedName)
+                                        .foregroundColor(.accentColor)
+                                    Text(player.name)
                                 }
                             }
-                                    .onDelete(perform: deletePlayer)
+                            .onDelete(perform: deletePlayer)
                         } else {
                             ForEach($playerTemplates, id: \.id) { player in
                                 HStack {
                                     Image (systemName: "person.fill")
-                                            .foregroundColor(.accentColor)
-                                    TextField("playerName".localized(), text: player.name)
-                                            .multilineTextAlignment(.leading)
+                                        .foregroundColor(.accentColor)
+                                    TextField("playerName", text: player.name)
+                                        .multilineTextAlignment(.leading)
                                 }
                             }
-                                    .onDelete(perform: deletePlayer)
+                            .onDelete(perform: deletePlayer)
                         }
-
                     }
-
+                    
                     Button(action: {
                         playerTemplates.append(PlayerTemplate(name:""))
                     }, label: {
                         HStack {
                             Spacer()
                             Image (systemName: "plus.circle")
-                                    .font(.title2)
+                                .font(.title2)
                         }
                     })
                 } header: {
-                    Text("players".localized())
+                    Text("players")
                 }
-
-
+                
+                
                 Section {
-                    DisclosureGroup("selectColor".localized()) {
+                    DisclosureGroup("selectColor") {
                         ColorPicker(selection: $selectedColor)
                     }
-                            .listRowSeparator(.hidden)
-
-                    DisclosureGroup("selectIcon".localized()) {
+                    .listRowSeparator(.hidden)
+                    
+                    DisclosureGroup("selectIcon") {
                         IconPicker(selection: $selectedIcon, selectedColor: $selectedColor)
                     }
-                            .listRowSeparator(.hidden)
+                    .listRowSeparator(.hidden)
                 } header: {
-                    Text("customize".localized())
+                    Text("customize")
                 }
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("save".localized(), action: addOrUpdateGame)
-                            .disabled(!isValid)
+                    Button("save", action: addOrUpdateGame)
+                        .disabled(!isValid)
                 }
-
+                
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("cancel".localized(), role: .cancel) {
+                    Button("cancel", role: .cancel) {
                         dismiss()
                     }
                 }
             }
-            .navigationTitle("addGame".localized())
+            .navigationTitle("addGame")
             .navigationBarTitleDisplayMode(.inline)
-                    .onAppear {
-                        if let game = game {
-                            name = game.wrappedName
-                            selectedColor = game.wrappedColor
-                            selectedIcon = game.wrappedIcon
-                        }
-                    }
+            .onAppear {
+                if let game = game {
+                    name = game.name
+                    selectedColor = game.color
+                    selectedIcon = game.icon
+                }
+            }
         }
     }
     
@@ -143,11 +141,15 @@ struct GameAddEdit: View {
         if isValid {
             withAnimation {
                 if (game != nil) {
-                    GameManager.shared.updateGame(game: game!, name: name, icon: selectedIcon, color: selectedColor)
+                    game?.name = name
+                    game?.icon = selectedIcon
+                    game?.color = selectedColor
                 } else {
-                    GameManager.shared.addGame(name: name, icon: selectedIcon, color: selectedColor, players: playerTemplates)
+                    let gameToAdd = Game(name: name, color: selectedColor, icon: selectedIcon)
+                    modelContext.insert(gameToAdd)
                 }
-               
+                
+                try? modelContext.save()
                 dismiss()
             }
         }
@@ -155,12 +157,11 @@ struct GameAddEdit: View {
     
     private func deletePlayer(at offsets: IndexSet) {
         if (game != nil) {
-            offsets.map { players![$0] }.forEach(viewContext.delete)
-            do {
-                try viewContext.save()
-            } catch {
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            withAnimation {
+                for index in offsets {
+                    game?.players.remove(at: index)
+                    try? modelContext.save()
+                }
             }
         } else {
             playerTemplates.remove(atOffsets: offsets)
