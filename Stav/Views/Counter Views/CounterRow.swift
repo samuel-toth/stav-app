@@ -20,14 +20,14 @@ struct CounterRow: View {
     
     var body: some View {
         HStack {
-            Image(systemName: counter.icon)
-                .foregroundColor(Color(counter.color))
+            Image(systemName: counter.name )
+                .foregroundColor(Color(counter.color ?? "AccentColor"))
                 .font(.system(size: 25))
                 
             VStack(alignment: HorizontalAlignment.leading) {
-                Text(counter.name)
+                Text(counter.name )
                     .font(Font.system(.title3, design: .default))
-                    .foregroundColor(Color(counter.color))
+                    .foregroundColor(Color(counter.color ?? "AccentColor"))
                     .lineLimit(1)
                     
                 Text(counter.modifiedAt.localizedTimeDifference())
@@ -44,12 +44,9 @@ struct CounterRow: View {
                 .onTapGesture {
                     UIImpactFeedbackGenerator(style: .soft).impactOccurred()
                     counter.value += 1
-                    
                     let newHistoryRecord = HistoryRecord(value: 1, totalValue: counter.value)
                     counter.records.append(newHistoryRecord)
-                    
-                    try? modelContext.save()
-                }
+                                    }
                 Button("-") {
                 }
                 .padding(.horizontal, 10)
@@ -60,9 +57,6 @@ struct CounterRow: View {
                     
                     let newHistoryRecord = HistoryRecord(value: -1, totalValue: counter.value)
                     counter.records.append(newHistoryRecord)
-                    
-                    try? modelContext.save()
-
                 }
             }
             
@@ -71,11 +65,9 @@ struct CounterRow: View {
             Text("\(counter.value)")
                 .valueDisplayStyle()
         }
-
         .contextMenu {
             Button {
                 counter.isFavourite.toggle()
-                try? modelContext.save()
             } label: {
                 Label(counter.isFavourite ? "removeFavourite" : "markFavourite", systemImage: counter.isFavourite ? "heart.slash" : "heart")
             }
@@ -91,7 +83,6 @@ struct CounterRow: View {
                 withAnimation {
                     modelContext.delete(counter)
                     try? modelContext.save()
-
                 }
             } label: {
                 Label("delete", systemImage: "trash")

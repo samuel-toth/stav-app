@@ -122,8 +122,8 @@ struct CounterAddEdit: View {
                     hasReminder = counter.hasGoal
                     goalValue = counter.goalValue
                     goalDate = counter.goalDate ?? Date.now
-                    selectedColor = counter.color
-                    selectedIcon = counter.icon
+                    selectedColor = counter.color!
+                    selectedIcon = counter.icon!
                 }
             }
         }
@@ -137,8 +137,12 @@ struct CounterAddEdit: View {
                     counter?.hasGoal = hasGoal
                     counter?.color = selectedColor
                     counter?.icon = selectedIcon
-                    counter?.goalValue = goalValue!
-                    counter?.goalDate = goalDate
+                    
+                    if hasGoal {
+                        counter?.goalValue = goalValue!
+                        counter?.goalDate = goalDate
+                    }
+                    
                 } else {
                     let counterToAdd = Counter(name: name, value: value, hasGoal: hasGoal, color: selectedColor, icon: selectedIcon)
                     modelContext.insert(counterToAdd)

@@ -37,7 +37,7 @@ class StatisticsHandler {
 
         let empty: [Date: [HistoryRecord]] = [:]
         return historyRecords.reduce(into: empty) { acc, cur in
-                    let components = Calendar.current.dateComponents([.year, .month, .day], from: cur.timestamp ?? Date())
+            let components = Calendar.current.dateComponents([.year, .month, .day], from: cur.timestamp )
                     let date = Calendar.current.date(from: components)!
                     acc[date, default: []].append(cur)
                 }
@@ -49,7 +49,7 @@ class StatisticsHandler {
 
         let empty: [Date: [HistoryRecord]] = [:]
         return historyRecords.reduce(into: empty) { acc, cur in
-                    let components = Calendar.current.dateComponents([.year, .month, .weekOfMonth], from: cur.timestamp ?? Date())
+            let components = Calendar.current.dateComponents([.year, .month, .weekOfMonth], from: cur.timestamp )
                     let date = Calendar.current.date(from: components)!
                     acc[date, default: []].append(cur)
                 }
@@ -60,7 +60,7 @@ class StatisticsHandler {
     private func groupHistoryRecordsByMonth(historyRecords: [HistoryRecord]) -> [GroupData] {
         let empty: [Date: [HistoryRecord]] = [:]
         return historyRecords.reduce(into: empty) { acc, cur in
-                    let components = Calendar.current.dateComponents([.year, .month], from: cur.timestamp ?? Date())
+            let components = Calendar.current.dateComponents([.year, .month], from: cur.timestamp )
                     let date = Calendar.current.date(from: components)!
                     acc[date, default: []].append(cur)
                 }
@@ -72,7 +72,7 @@ class StatisticsHandler {
         
         let empty: [Date: [HistoryRecord]] = [:]
         return historyRecords.reduce(into: empty) { acc, cur in
-            let components = Calendar.current.dateComponents([.year], from: cur.timestamp ?? Date())
+            let components = Calendar.current.dateComponents([.year], from: cur.timestamp )
             let date = Calendar.current.date(from: components)!
             acc[date, default: []].append(cur)
         }

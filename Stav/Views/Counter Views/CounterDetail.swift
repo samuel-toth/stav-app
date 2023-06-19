@@ -36,9 +36,7 @@ struct CounterDetail: View {
                     .font(.system(size:90))
                     .fontWeight(Font.Weight.semibold)
                     .padding([.bottom], 10)
-                    .foregroundColor(Color(counter.color))
-                
-                
+                    .foregroundColor(Color(counter.color ?? "AccentColor"))
                 
                 ZStack {
                     HStack {
@@ -47,7 +45,7 @@ struct CounterDetail: View {
                             counter.value += selectedNumber
                             let newHistoryRecord = HistoryRecord(value: selectedNumber, totalValue: counter.value)
                             counter.records.append(newHistoryRecord)
-                        }) {
+                                                    }) {
                             Image(systemName: "plus.circle")
                                 .font(.system(size: 80))
                         }
@@ -68,7 +66,7 @@ struct CounterDetail: View {
                     
                     Picker("", selection: $selectedNumber) {
                         ForEach(1...100, id: \.self) {
-                            Text("\($0)")
+                            Text(String($0))
                         }
                     }
                     .zIndex(-1)
@@ -89,7 +87,7 @@ struct CounterDetail: View {
                             Text("\(Int(counter.goalValue ?? 0))")
                         }
                         .gaugeStyle(.accessoryLinear)
-                        .tint(Color(counter.color))
+                        .tint(Color(counter.color ?? "AccentColor"))
                         .foregroundColor(Color(UIColor.secondaryLabel))
                         
                         if counter.value < counter.goalValue ?? 0 {
@@ -204,7 +202,9 @@ struct CounterDetail: View {
                                 secondaryButton: .destructive(
                                     Text("reset"),
                                     action: {
-                                        // TODO: Reset counter
+                                        let newHistoryRecord = HistoryRecord(value: -counter.value, totalValue: 0)
+                                        counter.records.append(newHistoryRecord)
+                                        counter.value = 0
                                     }
                                 )
                             )
@@ -213,7 +213,7 @@ struct CounterDetail: View {
                         .alert(isPresented: $showDeleteAlert) {
                             Alert(
                                 title: Text("youSure"),
-                                message: Text("deleteCounter \(counter.name)"),
+                                message: Text("deleteCounter \(counter.name )"),
                                 primaryButton: .default(
                                     Text("cancel")
                                 ),
@@ -238,13 +238,13 @@ struct CounterDetail: View {
         .toolbar {
             ToolbarItem(placement: .principal) {
                 HStack {
-                    Image(systemName: counter.icon )
+                    Image(systemName: counter.icon ?? "plus" )
                         .font(.system(size: 25))
-                        .foregroundColor(Color(counter.color))
-                    Text(counter.name)
+                        .foregroundColor(Color(counter.color ?? "AccentColor"))
+                    Text(counter.name )
                         .font(.system(size: 25))
                         .fontWeight(Font.Weight.semibold)
-                        .foregroundColor(Color(counter.color))
+                        .foregroundColor(Color(counter.color ?? "AccentColor"))
                 }
             }
             

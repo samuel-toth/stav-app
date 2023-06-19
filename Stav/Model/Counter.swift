@@ -18,8 +18,8 @@ class Counter {
     var hasGoal: Bool
     var goalDate: Date?
     var goalValue: Int?
-    var color: String
-    var icon: String
+    var color: String?
+    var icon: String?
     var createdAt: Date
     var modifiedAt: Date
     @Relationship(.cascade) var records: [HistoryRecord] = []

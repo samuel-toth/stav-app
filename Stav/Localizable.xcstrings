@@ -404,6 +404,7 @@
       }
     },
     "draw" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1090,6 +1091,7 @@
       }
     },
     "noPlayers" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

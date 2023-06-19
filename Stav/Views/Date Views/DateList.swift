@@ -30,7 +30,7 @@ struct DateList: View {
                             VStack {
                                 Text(datum.name )
                                     .font(.system(size: 20))
-                                    .foregroundColor(Color(datum.color!))
+                                    .foregroundColor(Color(datum.color ?? "AccentColor"))
                                     .fontWeight(.semibold)
 
                                 Spacer()

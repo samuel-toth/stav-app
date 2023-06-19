@@ -18,9 +18,22 @@ struct CounterList: View {
     
     // MARK: Sort variables
     @State private var selectedSort: SelectedSort = .name
-    @State private var sortNameAscending: Bool = true
-    @State private var sortValueAscending: Bool = true
-    @State private var sortModifiedAscending: Bool = true
+    @State private var sortAscending: Bool = true
+    
+    private var sortedCounters : [Counter] {
+        return allCounters.filter {
+            showFavourite ? $0.isFavourite : true
+        } .sorted {
+            switch selectedSort {
+            case .name:
+                $0.name < $1.name
+            case .value:
+                $0.value < $1.value
+            case .modified:
+                $0.modifiedAt < $1.modifiedAt
+            }
+        } .reverse(condition: sortAscending)
+    }
     
     var body: some View {
         NavigationStack {
@@ -31,7 +44,7 @@ struct CounterList: View {
                     .opacity(0.1)
             }
             List {
-                ForEach(allCounters) { counter in
+                ForEach(sortedCounters) { counter in
                     NavigationLink(value: counter) {
                         CounterRow(counter: counter)
                             .frame(height: 50)
@@ -57,7 +70,6 @@ struct CounterList: View {
                     Menu {
                         Button(action: {
                             showFavourite.toggle()
-                            // TODO: Show favourite counters
                         }) {
                             Label(showFavourite ? "showAllCounters" : "showFavourites", systemImage: showFavourite ? "heart.slash" : "heart")
                         }
@@ -65,22 +77,22 @@ struct CounterList: View {
                         Menu {
                             Button(action: {
                                 selectedSort = .name
-                                sortCounters()
+                                sortAscending.toggle()
                             }) {
-                                Label("name", systemImage: selectedSort == .name ? (sortNameAscending ? "arrow.up" : "arrow.down" ): "")
+                                Label("name", systemImage: selectedSort == .name ? (sortAscending ? "arrow.up" : "arrow.down" ): "")
                             }
                             Button(action: {
                                 selectedSort = .value
-                                sortCounters()
+                                sortAscending.toggle()
                             }) {
-                                Label("value", systemImage: selectedSort == .value ? (sortValueAscending ? "arrow.up" : "arrow.down" ): "")
+                                Label("value", systemImage: selectedSort == .value ? (sortAscending ? "arrow.up" : "arrow.down" ): "")
                             }
                             
                             Button(action: {
                                 selectedSort = .modified
-                                sortCounters()
+                                sortAscending.toggle()
                             }) {
-                                Label("modified", systemImage: selectedSort == .modified ? (sortModifiedAscending ? "arrow.up" : "arrow.down" ): "")
+                                Label("modified", systemImage: selectedSort == .modified ? (sortAscending ? "arrow.down" : "arrow.up" ): "")
                             }
                         } label: {
                             Label("sortBy", systemImage: "arrow.up.arrow.down")
@@ -108,18 +120,6 @@ struct CounterList: View {
         }
     }
     
-    // TODO: counter sorting
-    private func sortCounters() {
-        switch selectedSort {
-        case .name:
-            sortNameAscending.toggle()
-        case .value:
-            sortValueAscending.toggle()
-        case .modified:
-            sortModifiedAscending.toggle()
-        }
-    }
-    
     private func deleteCounter(offsets: IndexSet) {
         withAnimation {
             for index in offsets {
@@ -134,5 +134,11 @@ struct CounterList: View {
 struct CounterListView_Previews: PreviewProvider {
     static var previews: some View {
         CounterList()
+    }
+}
+
+extension Array {
+    func reverse(condition: Bool) -> [Element] {
+        condition ? self.reversed() : self
     }
 }
